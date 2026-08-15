@@ -8,13 +8,13 @@ import { Icons } from "@/components/icons";
 
 const BLUR_FADE_DELAY = 0.04;
 
-type TabType = "websites" | "extensions" | "google apps script";
+type TabType = "all" | "websites" | "extensions" | "google apps script";
 
 // Add new projects here that will only show on this page
 const ADDITIONAL_PROJECTS = [
   {
     title: "Business OS – Google Sheets Web App",
-    href: "",
+    href: "/projects/business-os",
     dates: "Nov 2025 - Dec 2025",
     active: true,
     description:
@@ -33,7 +33,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Walmart Product Scraper",
-    href: "https://github.com/pasindupiumal03/Walmart-Product-Scrapes-Extension",
+    href: "/projects/walmart-product-scraper",
     dates: "Jan 2026 - Feb 2026",
     active: true,
     description:
@@ -62,7 +62,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Freelancer Workspace – Google Sheets SPA",
-    href: "",
+    href: "/projects/freelancer-workspace",
     dates: "Dec 2025 – Dec 2025",
     active: true,
     description:
@@ -81,7 +81,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "FlowKey - Bookmark & Layout Manager",
-    href: "https://chromewebstore.google.com/detail/flowkey-bookmark-layout-m/lpgjlhajnhhdbaleigdkeloeeniedpnj",
+    href: "/projects/flowkey",
     dates: "Aug 2025 - Sep 2025",
     active: true,
     description:
@@ -113,7 +113,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Schedule Monitor",
-    href: "https://github.com/pasindupiumal03/Amazon-Schedule-Monitor-Extension",
+    href: "/projects/amazon-schedule-monitor",
     dates: "Feb 2025 - Mar 2025",
     active: true,
     description:
@@ -140,8 +140,8 @@ const ADDITIONAL_PROJECTS = [
     category: "extensions" as TabType,
   },
   {
-    title: "OneLearning",
-    href: "",
+    title: "OneLearning (LinkedIn Knowledge Scraper)",
+    href: "/projects/no-code-web-scraper",
     dates: "Sep 2025 - Oct 2025",
     active: true,
     description:
@@ -161,7 +161,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Censor AI",
-    href: "https://chromewebstore.google.com/detail/censor/elgfhammpjfmmgiflpjbohhbimlfdimm",
+    href: "/projects/censor-ai",
     dates: "Jul 2025 - Aug 2025",
     active: true,
     description:
@@ -187,7 +187,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "WebMind",
-    href: "",
+    href: "/projects/webmind",
     dates: "Apr 2025 - May 2025",
     active: true,
     description:
@@ -209,7 +209,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Positional AI",
-    href: undefined,
+    href: "/projects/positional-ai",
     dates: "Jun 2025 - Jul 2025",
     active: true,
     description:
@@ -228,7 +228,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Link Shortener",
-    href: undefined,
+    href: "/projects/link-shortener",
     dates: "Mar 2025 - Apr 2025",
     active: true,
     description:
@@ -247,7 +247,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Office OS – Google Workspace Productivity System",
-    href: "",
+    href: "/projects/office-os",
     dates: "Jan 2026 – Feb 2026",
     active: true,
     description:
@@ -268,7 +268,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Product Scraper",
-    href: "https://github.com/pasindupiumal03/Amazon-Product-Scrapes-Extension",
+    href: "/projects/amazon-product-scraper",
     dates: "Oct 2025 - Nov 2025",
     active: true,
     description:
@@ -298,7 +298,7 @@ const ADDITIONAL_PROJECTS = [
 
   {
     title: "Solana Tracker",
-    href: "https://solan-nine.vercel.app/",
+    href: "/projects/solana-tracker",
     dates: "Aug 2025 - Sep 2025",
     active: true,
     description:
@@ -330,7 +330,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Flowkey",
-    href: "https://flowkey-two.vercel.app/",
+    href: "/projects/flowkey",
     dates: "Sep 2025 - Oct 2025",
     active: true,
     description:
@@ -354,7 +354,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Polybiuos",
-    href: "https://eigencode.vercel.app/",
+    href: "/projects/polybiuos",
     dates: "Jun 2025 - Jul 2025",
     active: true,
     description:
@@ -384,7 +384,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Alphyre",
-    href: "https://aphyre.vercel.app/",
+    href: "/projects/alphyre",
     dates: "Nov 2025 - Dec 2025",
     active: true,
     description:
@@ -419,7 +419,7 @@ const ADDITIONAL_PROJECTS = [
 
   {
     title: "Fraktom",
-    href: "https://fraktom.vercel.app/",
+    href: "/projects/fraktom",
     dates: "May 2025 - Jul 2025",
     active: true,
     description:
@@ -443,7 +443,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "AWS WAF & Amazon Captcha Auto-Recovery: Shadow DOM Smart Reloader",
-    href: "",
+    href: "/projects/amazon-shift-sniper",
     dates: "Mar 2026 - Apr 2026",
     active: true,
     description:
@@ -464,7 +464,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Real-Time Slot Tracker: High-Fidelity Data Extraction Tool",
-    href: "",
+    href: "/projects/amazon-shift-sniper",
     dates: "Apr 2026 - May 2026",
     active: true,
     description:
@@ -485,7 +485,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Portal Session Recovery: URL Auto-Repair Chrome Extension",
-    href: "",
+    href: "/projects/amazon-shift-sniper",
     dates: "May 2026 - Jun 2026",
     active: true,
     description:
@@ -506,7 +506,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Shift Availability Monitor: Real-Time Web Scraping Engine",
-    href: "",
+    href: "/projects/amazon-shift-sniper",
     dates: "Jun 2026 - Jul 2026",
     active: true,
     description:
@@ -527,7 +527,7 @@ const ADDITIONAL_PROJECTS = [
   },
   {
     title: "Amazon Hiring Automation: Custom Chrome Extension with OTP & AI-Sync",
-    href: "",
+    href: "/projects/amazon-shift-sniper",
     dates: "Jul 2026 - Aug 2026",
     active: true,
     description:
@@ -549,7 +549,8 @@ const ADDITIONAL_PROJECTS = [
 ];
 
 export default function ProjectsPage() {
-  const [activeTab, setActiveTab] = useState<TabType>("extensions");
+  const [activeTab, setActiveTab] = useState<TabType>("all");
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Combine DATA.projects with additional projects and sort by date (latest first)
   const allProjects = [
@@ -565,81 +566,145 @@ export default function ProjectsPage() {
       links: p.links || [],
     })),
   ].sort((a, b) => {
-    if (a.title === "Amazon Shift Sniper: High-Frequency Automation Chrome Extension") return -1;
-    if (b.title === "Amazon Shift Sniper: High-Frequency Automation Chrome Extension") return 1;
+    if (a.title.includes("FUT Snipe Bot")) return -1;
+    if (b.title.includes("FUT Snipe Bot")) return 1;
+    if (a.title.includes("Amazon Shift Sniper")) return -1;
+    if (b.title.includes("Amazon Shift Sniper")) return 1;
     const dateA = parseProjectDate(a.dates);
     const dateB = parseProjectDate(b.dates);
     return dateB.getTime() - dateA.getTime();
   });
 
   const filteredProjects = allProjects.filter((project) => {
-    return project.category === activeTab;
+    const matchesTab = activeTab === "all" || project.category === activeTab;
+    if (!matchesTab) return false;
+
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      project.title.toLowerCase().includes(q) ||
+      project.description.toLowerCase().includes(q) ||
+      project.technologies.some((t) => t.toLowerCase().includes(q))
+    );
   });
 
   return (
     <section id="projects">
-      <div className="max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
+      <div className="max-w-2xl mx-auto py-12 pb-24 sm:py-20 px-6">
         <div className="flex min-h-0 flex-col gap-y-8">
           <div className="flex flex-col gap-y-4 items-center justify-center">
             <div className="flex items-center w-full">
               <div className="flex-1 h-px bg-linear-to-r from-transparent from-5% via-border via-95% to-transparent" />
               <div className="border bg-primary z-10 rounded-xl px-4 py-1">
                 <span className="text-background text-sm font-medium">
-                  My Projects
+                  Complete Project Portfolio
                 </span>
               </div>
               <div className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent" />
             </div>
-            <div className="flex flex-col gap-y-3 items-center justify-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
-                Check out my latest work
+            <div className="flex flex-col gap-y-2 items-center justify-center text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Case Studies & Technical Proof
               </h2>
-              <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-                I&apos;ve worked on a variety of projects, from simple websites to
-                complex web applications. Here are a few of my favorites.
+              <p className="text-muted-foreground text-sm sm:text-base max-w-[540px] text-pretty">
+                23+ production browser extensions, full-stack SaaS platforms, Web3 tools, and Google Apps Script enterprise workflows.
               </p>
             </div>
 
-            {/* Tabs */}
-            <div className="flex gap-2 border border-border rounded-lg p-1 bg-muted/50">
+            {/* UPWORK HIRE CALLOUT RIBBON */}
+            <div className="w-full p-3.5 rounded-2xl border-2 border-primary/30 bg-primary/5 dark:bg-primary/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-left my-1">
+              <div className="space-y-0.5">
+                <span className="text-xs font-bold text-foreground">Need a custom extension or automation bot?</span>
+                <p className="text-[11px] text-muted-foreground">Available for $20/hr tracked work or fixed-milestone deliverables.</p>
+              </div>
+              <a
+                href="https://www.upwork.com/freelancers/pasindupiumal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-primary text-primary-foreground text-xs font-bold shadow-xs shrink-0 hover:opacity-90 transition-opacity"
+              >
+                Hire on Upwork ($20/hr) ↗
+              </a>
+            </div>
+
+            {/* Search Input */}
+            <div className="w-full relative">
+              <input
+                type="text"
+                placeholder="Search 23 projects by keyword (e.g. AI, Manifest V3, WebSockets, Scraping, Solana)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-2.5 pl-4 pr-10 text-xs sm:text-sm rounded-xl border bg-background/60 backdrop-blur-xs placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground text-xs font-bold p-1"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+
+            {/* Category Tabs */}
+            <div className="flex flex-wrap gap-1.5 border border-border rounded-xl p-1 bg-muted/40 w-full justify-center">
               <button
-                onClick={() => setActiveTab("extensions")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === "extensions"
-                    ? "bg-background text-foreground shadow-sm"
+                onClick={() => setActiveTab("all")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  activeTab === "all"
+                    ? "bg-background text-foreground shadow-xs"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Extensions
+                All ({allProjects.length})
               </button>
               <button
-                onClick={() => setActiveTab("google apps script")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === "google apps script"
-                    ? "bg-background text-foreground shadow-sm"
+                onClick={() => setActiveTab("extensions")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  activeTab === "extensions"
+                    ? "bg-background text-foreground shadow-xs"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Google Apps Script
+                Chrome Extensions ({allProjects.filter(p => p.category === "extensions").length})
               </button>
               <button
                 onClick={() => setActiveTab("websites")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                   activeTab === "websites"
-                    ? "bg-background text-foreground shadow-sm"
+                    ? "bg-background text-foreground shadow-xs"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                Websites
+                SaaS & Web3 ({allProjects.filter(p => p.category === "websites").length})
+              </button>
+              <button
+                onClick={() => setActiveTab("google apps script")}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  activeTab === "google apps script"
+                    ? "bg-background text-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                Google Apps Script ({allProjects.filter(p => p.category === "google apps script").length})
               </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-[800px] mx-auto w-full text-left">
+          <div className="flex items-center justify-between text-xs text-muted-foreground px-1">
+            <span>Showing {filteredProjects.length} of {allProjects.length} projects</span>
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")} className="text-primary hover:underline font-medium">
+                Clear filter
+              </button>
+            )}
+          </div>
+
+          <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 max-w-[800px] mx-auto w-full text-left">
             {filteredProjects.map((project, id) => (
               <BlurFade
                 key={project.title}
-                delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                delay={BLUR_FADE_DELAY * 4 + id * 0.03}
                 className="h-full"
               >
                 <ProjectCard
@@ -656,6 +721,19 @@ export default function ProjectsPage() {
               </BlurFade>
             ))}
           </div>
+
+          {filteredProjects.length === 0 && (
+            <div className="p-8 text-center border rounded-2xl bg-muted/20 space-y-2">
+              <p className="text-sm font-semibold text-foreground">No projects found matching &ldquo;{searchQuery}&rdquo;</p>
+              <p className="text-xs text-muted-foreground">Try searching for a different keyword or reset filters.</p>
+              <button
+                onClick={() => { setSearchQuery(""); setActiveTab("all"); }}
+                className="mt-2 px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-semibold"
+              >
+                Reset Search
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </section>

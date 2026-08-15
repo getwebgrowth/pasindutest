@@ -33,8 +33,14 @@ export default function ContactSection() {
           >
             with a direct question on WhatsApp
           </Link>{" "}
-          and I&apos;ll respond whenever I can. I will ignore all
-          soliciting.
+          or explore my{" "}
+          <Link
+            href="/chrome-extension-developer-for-hire"
+            className="text-primary font-semibold hover:underline underline-offset-4"
+          >
+            Chrome Extension Developer Services & Rates
+          </Link>
+          .
         </p>
       </div>
     </div>

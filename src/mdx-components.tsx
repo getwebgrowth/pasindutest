@@ -8,6 +8,35 @@ type CodeProps = ComponentProps<"code"> & {
 
 export const mdxComponents = {
   MediaContainer,
+  img: (props: ComponentProps<"img">) => (
+    <div className="my-6 rounded-2xl overflow-hidden border border-border bg-muted/30 shadow-md">
+      <img
+        {...props}
+        className="w-full h-auto object-cover max-h-[500px]"
+        loading="lazy"
+      />
+    </div>
+  ),
+  video: (props: ComponentProps<"video">) => (
+    <div className="my-6 rounded-2xl overflow-hidden border border-border bg-black shadow-lg">
+      <video
+        {...props}
+        className="w-full h-auto max-h-[500px] object-contain"
+        controls
+        playsInline
+      />
+    </div>
+  ),
+  iframe: (props: ComponentProps<"iframe">) => (
+    <div className="my-6 aspect-video w-full rounded-2xl overflow-hidden border border-border shadow-lg">
+      <iframe
+        {...props}
+        className="w-full h-full"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
+    </div>
+  ),
   pre: (props: ComponentProps<"pre">) => <CodeBlock {...props} />,
   hr: (props: ComponentProps<"hr">) => (
     <div className="my-10 flex w-full items-center" {...props}>

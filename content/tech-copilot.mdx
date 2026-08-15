@@ -1,0 +1,110 @@
+---
+title: "Tech Copilot — Automotive AI Overlay Chrome Extension (Manifest V3 & Gemini Pro RAG)"
+publishedAt: "2026-07-20"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Published Chrome Web Store AI extension built for automotive technicians. Features Gemini Pro RAG, OpenAI API streaming, draggable floating DOM overlay, snip & scroll screen capture, and ExtensionPay freemium subscription paywall."
+image: "/Automated Pro.png"
+content: ""
+---
+
+# Tech Copilot — Automotive AI Overlay Chrome Extension
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Chrome Web Store Live</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">5.0 ★ Upwork Review (6 Milestones Paid)</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Gemini Pro RAG</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">OpenAI API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">ExtensionPay Monetization</span>
+</div>
+
+## Executive Summary
+
+**Tech Copilot** is a specialized floating AI assistant designed for automotive technicians, mechanics, and repair engineers navigating dense OEM vehicle repair portals (ALLDATA, Mitchell 1, Identifix). Instead of switching tabs or manually copying technical diagrams, technicians use Tech Copilot's draggable browser overlay to extract wiring diagrams, interpret diagnostic trouble codes (DTCs), and receive instant step-by-step repair guides directly on top of OEM web manuals.
+
+- **Status**: Live on the [Chrome Web Store](https://chromewebstore.google.com/detail/tech-copilot/iipllbfcpkhafndcobpljgkjhlhohkbl)
+- **Product Website**: [techaicopilot.com](https://techaicopilot.com/how-it-works-1)
+- **Client Rating**: 5.0 ★ on Upwork over 6 paid milestones ($1,875+)
+
+---
+
+## Client Testimonial
+
+> "Working with Pasindu has been one of the best decisions I've made for my startup. Tech AI-Copilot has gone from an idea to a polished product because of his technical ability, attention to detail, and willingness to tackle difficult problems. He's reliable, communicates clearly, and always works with me to find the best solution rather than the easiest one."
+> 
+> **— Founder, Tech AI-Copilot**
+
+---
+
+## The Challenge
+
+1. **Complex OEM Web Portals**: Automotive manual portals rely on nested iframes, protected dynamic DOM elements, and PDF canvas viewers that resist traditional browser scraping.
+2. **Contextual Accuracy & Hallucination Prevention**: Automotive repair requires zero hallucination—a wrong wiring pinout or torque specification can damage costly vehicle components.
+3. **Monetization & Free Trial Quotas**: The client required a freemium model (e.g. 20 free AI queries per month with automatic monthly reset) and seamless Stripe/ExtensionPay checkout without requiring a heavy custom auth backend.
+4. **Draggable, Non-Intrusive UI**: Mechanics need a floating HUD that stays on top of technical manuals without causing page reflows or breaking site layout.
+
+---
+
+## Technical Architecture & Implementation
+
+```
+┌──────────────────────────────────────────────────────────┐
+│                   Active Browser Tab                     │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │   OEM Manual DOM (ALLDATA / Mitchell1 / Identifix) │  │
+│  │                                                    │  │
+│  │   ┌──────────────────────────────────────────────┐ │  │
+│  │   │  Floating React Shadow DOM Overlay           │ │  │
+│  │   │  • Draggable & Resizable HUD                 │ │  │
+│  │   │  • Snip & Scroll Canvas Screen Extractor     │ │  │
+│  │   │  • Streaming LLM Chat with Syntax & Pinouts  │ │  │
+│  │   └──────────────────────┬───────────────────────┘ │  │
+│  └──────────────────────────┼─────────────────────────┘  │
+└─────────────────────────────┼────────────────────────────┘
+                              ▼
+┌──────────────────────────────────────────────────────────┐
+│          Manifest V3 Background Service Worker           │
+│                                                          │
+│  ┌─────────────────────────┐  ┌───────────────────────┐  │
+│  │ Gemini Pro RAG & OpenAI │  │ ExtensionPay Paywall  │  │
+│  │ Stream Decoder Pipeline │  │ Freemium Limit Tracker│  │
+│  └─────────────────────────┘  └───────────────────────┘  │
+└──────────────────────────────────────────────────────────┘
+```
+
+### 1. Isolated Shadow DOM Floating Overlay
+To prevent styling conflicts with complex OEM portals (like Bootstrap or Tailwind CSS overrides), the entire assistant HUD is encapsulated inside a custom **Closed Shadow DOM Root**. The HUD features draggable positioning, collapsible states, and zero impact on target site scripts.
+
+### 2. Multi-Model AI Pipeline (OpenAI + Gemini Pro RAG)
+Implemented a multi-tier LLM processing engine:
+- **Snip & Capture Screen Extractor**: Uses the Chrome Capture API to let mechanics snip electrical schematics or connector pinouts.
+- **Gemini Pro Vision RAG**: Analyzes captured wiring diagrams, extracts wire color codes and connector pin tables.
+- **OpenAI Streaming Output**: Streams step-by-step diagnostic workflows into the chat UI in real time.
+
+### 3. ExtensionPay Freemium Monetization
+Integrated ExtensionPay for automated subscription billing:
+- Tracks user usage counts in `chrome.storage.sync`.
+- Enforces monthly free-tier quotas with automatic calendar reset.
+- Triggers one-click Stripe subscription modals directly from the extension.
+
+---
+
+## Core Technologies
+
+- **Manifest V3 Architecture**: Ephemeral background service worker with persistent state hydration.
+- **AI Integrations**: OpenAI API (GPT-4o), Google Gemini Pro Vision RAG.
+- **Frontend**: React 18, Tailwind CSS, Lucide Icons, Framer Motion.
+- **Monetization**: ExtensionPay, Stripe Billing API.
+- **Security & Privacy**: Minimal permissions model compliant with Google Chrome Web Store Single Purpose policies.
+
+---
+
+## Hire an Expert Chrome Extension Developer
+
+Need an AI-powered browser copilot, floating draggable overlay, or monetized Chrome extension built from scratch?
+
+- **Upwork Top Rated Developer** with 100% Job Success Score
+- **Hourly Rate**: $20/hr
+- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
+- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)

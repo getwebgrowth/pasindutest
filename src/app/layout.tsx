@@ -11,27 +11,48 @@ import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["400", "500", "600", "700"],
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(DATA.url),
   title: {
-    default: `${DATA.name} | Freelance Chrome Extension Developer`,
+    default: `${DATA.name} | Freelance Chrome Extension Developer & Browser Automation Expert`,
     template: `%s | ${DATA.name}`,
   },
   description: DATA.seoDescription,
+  keywords: [
+    "Freelance Chrome Extension Developer",
+    "Chrome Extension Developer",
+    "Manifest V3 Developer",
+    "Manifest V3 Migration",
+    "Browser Automation Developer",
+    "Web Scraping Expert",
+    "Custom Chrome Extensions",
+    "Hire Chrome Extension Developer",
+    "Upwork Chrome Extension Developer",
+    "Fiverr Chrome Extension Developer",
+    "Google Apps Script Developer",
+    "Next.js Developer",
+    "React Developer",
+    "Pasindu Piumal",
+  ],
+  authors: [{ name: DATA.name, url: DATA.url }],
+  creator: DATA.name,
+  publisher: DATA.name,
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: `${DATA.name} | Freelance Chrome Extension Developer`,
     description: DATA.seoDescription,
     url: DATA.url,
-    siteName: `${DATA.name}`,
+    siteName: `${DATA.name} Portfolio`,
     locale: "en_US",
     type: "website",
   },
@@ -48,12 +69,82 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: `${DATA.name} | Freelance Chrome Extension Developer`,
+    description: DATA.seoDescription,
     card: "summary_large_image",
+    creator: "@pasindupiumal03",
+    site: "@pasindupiumal03",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   verification: {
     google: "",
     yandex: "",
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${DATA.url}/#person`,
+      name: DATA.name,
+      url: DATA.url,
+      image: `${DATA.url}${DATA.avatarUrl}`,
+      jobTitle: "Freelance Chrome Extension Developer",
+      description: DATA.description,
+      sameAs: [
+        DATA.contact.social.GitHub.url,
+        DATA.contact.social.LinkedIn.url,
+        DATA.contact.social.X.url,
+        DATA.contact.social.Upwork.url,
+        DATA.contact.social.Fiverr.url,
+      ],
+      worksFor: {
+        "@type": "Organization",
+        name: "ByteSquadLabs",
+        url: "https://bytesquadlabs.com",
+      },
+      alumniOf: [
+        {
+          "@type": "EducationalOrganization",
+          name: "University of Westminster",
+          url: "https://westminster.ac.uk",
+        },
+        {
+          "@type": "EducationalOrganization",
+          name: "Informatics Institute of Technology",
+          url: "https://iit.ac.lk",
+        },
+      ],
+      knowsAbout: [
+        "Chrome Extension Development",
+        "Manifest V3",
+        "Browser Automation",
+        "Web Scraping",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "Google Apps Script",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${DATA.url}/#website`,
+      url: DATA.url,
+      name: `${DATA.name} - Freelance Chrome Extension Developer`,
+      description: DATA.seoDescription,
+      publisher: {
+        "@id": `${DATA.url}/#person`,
+      },
+      inLanguage: "en-US",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -63,6 +154,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",

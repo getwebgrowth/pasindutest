@@ -1,5 +1,5 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon } from "lucide-react";
+import { HomeIcon, NotebookIcon, BriefcaseIcon, MailIcon } from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
@@ -21,9 +21,9 @@ export const DATA = {
   location: "Kegalle, Sri Lanka",
   locationLink: "https://www.google.com/maps/place/kegalle",
   description:
-    "Expert Freelance Chrome Extension Developer specializing in Manifest V3, automation, and custom browser tools.",
+    "Expert Freelance Chrome Extension Developer specializing in Manifest V3, AI floating copilots, browser automation bots, and high-frequency web scrapers, alongside Web3 and full-stack SaaS development.",
   seoDescription:
-    "Hire Pasindu Piumal, an expert freelance Chrome Extension developer specializing in Manifest V3, automation, and web development. View my portfolio and projects.",
+    "Hire Pasindu Piumal, an expert freelance Chrome Extension developer specializing in Manifest V3, AI copilots, automation bots, web scraping, Web3, and full-stack SaaS development. View portfolio and case studies.",
   summary:
     "Since 2024, [I have been pursuing a BSc (Hons) in Software Engineering at the University of Westminster](/#education). In 2025, [I joined Bytesquadlabs as a Software Engineer](/#work). Where I work on full-stack web development and chrome extension projects. I enjoy building scalable applications using modern web technologies and creating browser extensions that enhance productivity and user experience. I’m driven by hands-on development and a strong interest in building practical, impactful software.",
   avatarUrl: "/me.png",
@@ -42,6 +42,8 @@ export const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: NotebookIcon, label: "Projects" },
+    { href: "/chrome-extension-developer-for-hire", icon: BriefcaseIcon, label: "Hire Me" },
+    { href: "/contact", icon: MailIcon, label: "Contact" },
   ],
   contact: {
     email: "pasindupiumal0123@gmail.com",
@@ -168,8 +170,89 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "FUT Snipe Bot (EliteFutBot) — High-Scale Transfer Engine",
+      href: "/projects/fut-snipe-bot",
+      dates: "Jan 2026 - Present",
+      active: true,
+      description:
+        "High-scale real-time browser extension and automated transfer market sniper for EA FC / FIFA. Scaled to 100,000+ active users and enabled over $1M+ in software revenue with sub-second WebSocket listeners, rate-limit throttling, and anti-ban behavioral randomization.",
+      technologies: [
+        "100k+ Users",
+        "$1M+ Revenue",
+        "Manifest V3",
+        "WebSockets",
+        "Anti-Ban Randomization",
+        "Rate Throttling",
+        "Discord Webhooks",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://elitefutbot.com/",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "Automated Pro (1).png",
+      video: "",
+    },
+    {
+      title: "Tech Copilot — Automotive AI Overlay Chrome Extension",
+      href: "/projects/tech-copilot",
+      dates: "Jun 2026 - Jul 2026",
+      active: true,
+      description:
+        "A floating, draggable AI assistant for automotive technicians reading OEM manuals. Built with Manifest V3, OpenAI API, Gemini Pro RAG integration, snip & scroll screen capture, and an ExtensionPay freemium subscription paywall (usage limits with auto-reset).",
+      technologies: [
+        "Manifest V3",
+        "OpenAI API",
+        "Gemini Pro RAG",
+        "ExtensionPay",
+        "Screen Capture",
+        "TailwindCSS",
+      ],
+      links: [
+        {
+          type: "Store",
+          href: "https://chromewebstore.google.com/detail/tech-copilot/iipllbfcpkhafndcobpljgkjhlhohkbl",
+          icon: <Icons.store className="size-3" />,
+        },
+        {
+          type: "Website",
+          href: "https://techaicopilot.com/how-it-works-1",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "Automated Pro.png",
+      video: "",
+    },
+    {
+      title: "RoboApply & Sociax — Multi-ATS Auto-Apply Systems",
+      href: "/projects/roboapply-ats-automation",
+      dates: "May 2026 - Jun 2026",
+      active: true,
+      description:
+        "Engineered automated job application form fillers across complex enterprise ATS platforms (Greenhouse, Workable, Ashby, Workday, Oracle). Built Ashby integration in 1 week after 20+ prior developers failed to reach MVP, then scaled across platforms.",
+      technologies: [
+        "DOM Automation",
+        "Workday ATS",
+        "Greenhouse",
+        "Ashby",
+        "Form Injection",
+        "OpenAI Resume Tailor",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://sociax.tech",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "Automated Pro (2).png",
+      video: "",
+    },
+    {
       title: "Amazon Shift Sniper: High-Frequency Automation Chrome Extension",
-      href: "",
+      href: "/projects/amazon-shift-sniper",
       dates: "Aug 2026 - Aug 2026",
       active: true,
       description:
@@ -189,7 +272,7 @@ export const DATA = {
     },
     {
       title: "Full SaaS Build | SuperDev Pro Chrome Extension Platform",
-      href: "https://chromewebstore.google.com/detail/superdev-pro/jlkikimlceonbmfjieipbonnglnlchhl",
+      href: "/projects/superdev-pro",
       dates: "Mar 2025 - May 2025",
       active: true,
       description:
@@ -216,7 +299,7 @@ export const DATA = {
     },
     {
       title: "SuperX - Chrome Extension and Full-Stack SaaS Platform",
-      href: "https://chromewebstore.google.com/detail/superx-twitter-analytics/bjobgelaoehgbnklgcaaehdpckmhkplk",
+      href: "/projects/superx-twitter-analytics",
       dates: "Jan 2025 - Mar 2025",
       active: true,
       description:
@@ -243,7 +326,7 @@ export const DATA = {
     },
     {
       title: "FullGrab - Screenshot & Full Page Capture",
-      href: "https://chromewebstore.google.com/detail/fullgrab-screenshot-full/jfpjeaefbhfogcponhjgpghahalcbplf",
+      href: "/projects/fullgrab-screenshot",
       dates: "Dec 2025 - Jan 2026",
       active: true,
       description:

@@ -21,16 +21,29 @@ function cleanDescriptionForAlt(desc: string): string {
   return cleaned.trim();
 }
 
+function formatMediaSrc(src?: string): string {
+  if (!src) return "";
+  if (src.startsWith("http://") || src.startsWith("https://") || src.startsWith("/")) {
+    return src;
+  }
+  // Check if filename has no extension
+  if (!src.includes(".")) {
+    return `/${src}.png`;
+  }
+  return `/${src}`;
+}
+
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
+  const formattedSrc = formatMediaSrc(src);
 
-  if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
+  if (!formattedSrc || imageError) {
+    return <div className="w-full h-48 bg-muted flex items-center justify-center text-xs text-muted-foreground">Preview</div>;
   }
 
   return (
     <img
-      src={src}
+      src={formattedSrc}
       alt={alt}
       className="w-full h-48 object-contain bg-muted"
       onError={() => setImageError(true)}
@@ -84,6 +97,8 @@ export function ProjectCard({
     ? `${title} - ${cleanDesc} by Pasindu Piumal`
     : `${title} project screenshot by Pasindu Piumal`;
 
+  const formattedVideo = formatMediaSrc(video);
+
   return (
     <div
       className={cn(
@@ -94,9 +109,9 @@ export function ProjectCard({
     >
       <div className="relative shrink-0">
         <ImageWrapper {...wrapperProps as any}>
-          {video ? (
+          {formattedVideo ? (
             <video
-              src={video}
+              src={formattedVideo}
               autoPlay
               loop
               muted

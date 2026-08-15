@@ -43,7 +43,7 @@ export default function ProjectsSection() {
                                 className="h-full"
                             >
                                 <ProjectCard
-                                    href="/projects"
+                                    href={project.href || "/projects"}
                                     key={project.title}
                                     title={project.title}
                                     description={project.description}
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
                                 variant="outline" 
                                 className="rounded-xl h-11 px-8 font-semibold shadow-xs hover:shadow-md transition-all group border-primary/20 hover:border-primary/50"
                             >
-                                Show More Projects
+                                Explore 23+ Projects Showcase
                                 <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                             </Button>
                         </Link>
