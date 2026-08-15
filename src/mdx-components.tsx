@@ -10,8 +10,12 @@ type CodeProps = ComponentProps<"code"> & {
 
 export const mdxComponents = {
   MediaContainer,
-  // Ignore duplicate top H1 in MDX since the page hero template renders the main H1
-  h1: () => null,
+  h1: (props: ComponentProps<"h1">) => (
+    <h2
+      className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mt-8 mb-4 pb-2 border-b border-border/60"
+      {...props}
+    />
+  ),
   h2: (props: ComponentProps<"h2">) => (
     <h2
       className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mt-10 mb-4 pb-2.5 border-b border-border/60 flex items-center gap-2 scroll-mt-20"
@@ -162,5 +166,3 @@ export const mdxComponents = {
     );
   },
 } as const;
-
-
