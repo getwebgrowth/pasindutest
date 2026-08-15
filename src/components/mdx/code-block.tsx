@@ -68,43 +68,47 @@ export function CodeBlock({ children, ...props }: CodeBlockProps) {
   };
 
   return (
-    <div className="group relative rounded-xl overflow-hidden border border-border">
+    <div className="group relative my-6 rounded-2xl overflow-hidden border border-border/80 bg-zinc-950 text-zinc-100 shadow-xl">
+      {/* Terminal Header */}
+      <div className="px-4 py-2.5 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between text-xs text-zinc-400">
+        <div className="flex items-center gap-1.5">
+          <span className="size-2.5 rounded-full bg-red-500/80 inline-block" />
+          <span className="size-2.5 rounded-full bg-yellow-500/80 inline-block" />
+          <span className="size-2.5 rounded-full bg-green-500/80 inline-block" />
+        </div>
+        <span className="text-[11px] font-mono text-zinc-400 truncate">
+          {title || "Architecture / Code"}
+        </span>
+        <Button
+          onClick={handleCopy}
+          variant="ghost"
+          size="icon"
+          className="size-6 text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded-md transition-colors"
+          aria-label="Copy code"
+        >
+          {copied ? <Check className="size-3.5 text-emerald-400" /> : <Copy className="size-3.5" />}
+        </Button>
+      </div>
+
       <pre
         ref={preRef}
         {...props}
-        className={cn("p-0! m-0! overflow-x-auto", props.className)}
+        className={cn("p-4! m-0! overflow-x-auto text-xs sm:text-[13px] font-mono leading-relaxed bg-zinc-950 text-zinc-200", props.className)}
       >
-        {title && (
-          <div className="p-3 text-xs font-medium border-b border-border rounded-t-xl bg-muted/50 text-foreground">
-            {title}
-          </div>
-        )}
-
-        <Button
-          onClick={handleCopy}
-          variant="outline"
-          size="icon"
-          className={cn("absolute size-8 text-primary cursor-pointer right-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity rounded-md border border-border shadow-none", title ? "top-13" : "top-3", props.className)}
-          aria-label="Copy code"
-        >
-          {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
-        </Button>
         {html && (
-          <div className="p-3">
-            <code
-              className={`shiki ${className}`}
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          </div>
+          <code
+            className={`shiki ${className}`}
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
         )}
 
         {!html && (
-          <div className="p-4">
+          <code>
             {children}
-          </div>
+          </code>
         )}
-      </pre >
-    </div >
+      </pre>
+    </div>
   );
 }
 
