@@ -33,8 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Dynamic project / post routes
-  const postRoutes: MetadataRoute.Sitemap = allPosts.map((post) => {
+  // Dynamic project case study routes
+  const projectRoutes: MetadataRoute.Sitemap = allPosts.map((post) => {
     const slug = post._meta.path.replace(/\.mdx$/, "");
     return {
       url: `${baseUrl}/projects/${slug}`,
@@ -44,5 +44,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticRoutes, ...postRoutes];
+  return [...staticRoutes, ...projectRoutes];
 }

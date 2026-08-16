@@ -1,0 +1,59 @@
+---
+title: "Comment Assistant — AI LinkedIn Engagement & Automated Response Chrome Extension"
+publishedAt: "2025-07-20"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Automated LinkedIn engagement tool scanning feed posts, generating multi-tone ChatGPT reply options, and posting selected comments with human-like typing delays."
+image: "/comment-assistant.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">LinkedIn Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">ChatGPT API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Human Delays</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
+</div>
+
+## Executive Summary
+
+**Comment Assistant** is a specialized social media productivity extension designed to streamline professional networking on LinkedIn. The extension extracts feed post text, sends it to OpenAI's GPT models to generate 3 tailored comment variations (Supportive, Analytical, Questioning), and automatically inserts the chosen response into the LinkedIn comment box.
+
+- **Target Platforms**: LinkedIn web app feed and post details.
+- **Safety Protocol**: Human-like typing cadence and variable jitter delays to protect user account standing.
+- **Efficiency**: Increases daily social engagement output by 5x while preserving authentic conversational quality.
+
+---
+
+## Technical Challenges & Solutions
+
+### 1. Dynamic Feed Item Scraped via MutationObserver
+LinkedIn uses heavy infinite scrolling and dynamic class names. I built an flexible DOM selector parser powered by `MutationObserver` that identifies post containers and author credentials without breaking when LinkedIn updates its CSS layout.
+
+### 2. Multi-Persona Response Engine
+The backend prompt pipeline structures the prompt to produce distinct angles:
+- **Supportive**: Validates key claims and expresses agreement.
+- **Analytical**: Adds industry context or relevant statistical follow-ups.
+- **Questioning**: Asks thought-provoking questions to spark further dialogue.
+
+### 3. Human Emulation Layer
+To prevent automated spam detection, text is typed character-by-character with randomized inter-keystroke pauses (30ms - 120ms) and simulated mouse movements before trigger clicks.
+
+---
+
+## Keywords & Search Intent
+
+- **Keywords**: LinkedIn comment automation Chrome extension, AI social media engagement tool, ChatGPT LinkedIn reply extension, custom social media bot developer, freelance extension developer.
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Comment Assistant architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

@@ -1,0 +1,53 @@
+---
+title: "Bonk Terminal — Solana Token Exploration & Real-Time Trading Telemetry Platform"
+publishedAt: "2025-08-01"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Full-stack Solana token exploration platform with a cyberpunk terminal UI for live trading data, candlestick charts, liquidity analytics, and AI price predictions."
+image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=400&fit=crop"
+video: "/bonk-terminal.mp4"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Solana Web3</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Cyberpunk Terminal UI</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Live WebSockets</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Solana Web3.js</span>
+</div>
+
+## Executive Summary
+
+**Bonk Terminal** is a full-stack Web3 trading intelligence application built for the Solana ecosystem. Featuring a terminal-style CLI dashboard, the platform streams sub-second token transaction metrics, price candlestick charts, DEX liquidity changes (Raydium, Orca), and AI price trend predictions.
+
+- **Live Platform**: [bonk-terminal.vercel.app](https://bonk-terminal.vercel.app)
+- **Key Features**: High-frequency RPC WebSocket streams, clipboard auto-paste, BLYV token analyzer, and Solana Tracker API integration.
+
+---
+
+## Technical Stack & Architecture
+
+### 1. Terminal UI Componentry
+Custom command-line user interface built with React, Tailwind CSS, and Framer Motion, supporting keyboard shortcuts (`Command+K`), command history, and instant token search.
+
+### 2. Solana Web3 & RPC Stream Pipeline
+Connects to high-throughput Solana RPC nodes over WebSocket subscriptions (`accountSubscribe`, `logsSubscribe`) to display token swaps, mint events, and pool liquidity changes instantly.
+
+### 3. AI Token Trend Scoring
+Applies momentum indicators (RSI, volume spikes, wallet concentration metrics) to rank trending Solana tokens in real time.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Bonk Terminal architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

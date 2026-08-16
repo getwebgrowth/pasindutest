@@ -2,8 +2,8 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { DATA } from "@/data/resume";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/contact-form";
+import { ProjectCard } from "@/components/project-card";
 import {
   Accordion,
   AccordionContent,
@@ -19,7 +19,6 @@ import {
   ExternalLink,
   Layers,
   Lock,
-  MessageSquareQuote,
   Network,
   RefreshCw,
   Rocket,
@@ -27,6 +26,9 @@ import {
   Sparkles,
   Star,
   Terminal,
+  TrendingUp,
+  Users,
+  Wrench,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -35,9 +37,9 @@ import type { Metadata } from "next";
 const BLUR_FADE_DELAY = 0.04;
 
 export const metadata: Metadata = {
-  title: "Hire Chrome Extension Developer | Freelance Manifest V3 & Automation Expert",
+  title: "Hire Expert Freelance Chrome Extension Developer (Manifest V3) | Pasindu Piumal",
   description:
-    "Hire Pasindu Piumal — Top Rated Upwork Chrome Extension Developer with 175+ shipped projects. Specializing in Manifest V3, AI overlays, ATS auto-apply, browser automation, and SaaS monetization. $20/hr or fixed milestones.",
+    "Hire Pasindu Piumal — Top Rated Chrome Extension Developer with 175+ shipped projects, $1M+ software revenue generated, and 100k+ active users. Specializing in Manifest V3, AI overlays, ATS auto-apply, browser automation, and SaaS monetization. $20/hr or fixed milestones.",
   keywords: [
     "Hire Chrome Extension Developer",
     "Freelance Chrome Extension Developer",
@@ -56,18 +58,18 @@ export const metadata: Metadata = {
     canonical: "/chrome-extension-developer-for-hire",
   },
   openGraph: {
-    title: "Hire Chrome Extension Developer | Top Rated Freelance Manifest V3 Expert",
+    title: "Hire Expert Freelance Chrome Extension Developer (Manifest V3) | Pasindu Piumal",
     description:
-      "Hire Pasindu Piumal — Top Rated Upwork Chrome Extension Developer with 175+ shipped projects. Specializing in Manifest V3, AI overlays, ATS auto-apply, browser automation, and SaaS monetization.",
+      "Hire Pasindu Piumal — Top Rated Chrome Extension Developer with 175+ shipped projects, $1M+ software revenue generated, and 100k+ active users. Manifest V3, AI overlays, automation & SaaS monetization.",
     url: `${DATA.url}/chrome-extension-developer-for-hire`,
     siteName: `${DATA.name} Portfolio`,
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    title: "Hire Chrome Extension Developer | Top Rated Freelance Manifest V3 Expert",
+    title: "Hire Expert Freelance Chrome Extension Developer (Manifest V3) | Pasindu Piumal",
     description:
-      "Hire Pasindu Piumal — Top Rated Upwork Chrome Extension Developer with 175+ shipped projects. Manifest V3, AI overlays, automation & SaaS monetization.",
+      "Hire Pasindu Piumal — Top Rated Chrome Extension Developer with 175+ shipped projects, $1M+ revenue generated, and 100k+ active users. Manifest V3, AI overlays, automation & SaaS monetization.",
     card: "summary_large_image",
     creator: "@pasindupiumal03",
   },
@@ -83,7 +85,7 @@ const structuredData = {
       url: `${DATA.url}/chrome-extension-developer-for-hire`,
       image: `${DATA.url}${DATA.avatarUrl}`,
       description:
-        "Professional Chrome Extension development specializing in Manifest V3, AI overlays, browser automation, web scraping, and full-stack SaaS monetization.",
+        "Professional Chrome Extension development specializing in Manifest V3, AI overlays, browser automation, web scraping, and full-stack SaaS monetization with 175+ shipped projects.",
       priceRange: "$$ - $20/hr or Fixed Milestone",
       telephone: DATA.contact.tel,
       email: DATA.contact.email,
@@ -92,6 +94,13 @@ const structuredData = {
         name: DATA.name,
         jobTitle: "Freelance Chrome Extension Developer",
         url: DATA.url,
+      },
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        reviewCount: "175",
+        bestRating: "5.0",
+        worstRating: "1.0",
       },
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -232,76 +241,7 @@ const SERVICES = [
   },
 ];
 
-const CASE_STUDIES = [
-  {
-    title: "FUT Snipe Bot (EliteFutBot) — High-Scale Transfer Engine",
-    slug: "fut-snipe-bot",
-    role: "Lead Automation Developer",
-    badge: "100k+ Users • $1M+ Revenue",
-    siteUrl: "https://elitefutbot.com/",
-    rating: "100,000+ Active Users • $1M+ Revenue Generated",
-    description:
-      "Automated real-time transfer market sniper for FIFA/EA FC. Engineered with human-like behavioral randomization, sub-second WebSocket listeners, RPM rate throttling, Discord webhook alerts, and an admin backend scaling to 100k+ users and $1M+ in software revenue.",
-    tech: ["100k+ Users", "$1M+ Revenue", "WebSockets", "Behavioral Randomization", "Rate Throttling", "Discord Webhooks"],
-  },
-  {
-    title: "Tech Copilot — Automotive AI Overlay",
-    slug: "tech-copilot",
-    role: "Lead Extension Engineer",
-    badge: "Chrome Web Store Live",
-    storeUrl: "https://chromewebstore.google.com/detail/tech-copilot/iipllbfcpkhafndcobpljgkjhlhohkbl",
-    siteUrl: "https://techaicopilot.com/how-it-works-1",
-    rating: "5.0 ★ (6 Upwork Milestones Paid)",
-    description:
-      "A floating, draggable AI assistant for automotive technicians reading OEM manuals. Built with Manifest V3, OpenAI API, Gemini Pro RAG integration, snip & scroll screen capture, and an ExtensionPay freemium subscription paywall (usage limits with auto-reset).",
-    tech: ["Manifest V3", "OpenAI API", "Gemini Pro RAG", "ExtensionPay", "Screen Capture", "TailwindCSS"],
-  },
-  {
-    title: "RoboApply & Sociax — Multi-ATS Auto-Apply Systems",
-    slug: "roboapply-ats-automation",
-    role: "Core Automation Architect",
-    badge: "100+ Job Boards Supported",
-    siteUrl: "https://sociax.tech",
-    rating: "5.0 ★ Client Review",
-    description:
-      "Engineered automated job application form fillers across complex enterprise ATS platforms (Greenhouse, Workable, Ashby, Workday, Oracle). Built Ashby integration in 1 week after 20+ prior developers failed to reach MVP, then scaled across platforms.",
-    tech: ["DOM Automation", "Workday ATS", "Greenhouse", "Ashby", "Form Injection", "OpenAI Resume Tailor"],
-  },
-  {
-    title: "SuperDev Pro & SuperX — Developer SaaS Platforms",
-    slug: "superdev-pro",
-    role: "Full-Stack & Extension Engineer",
-    badge: "6,000+ Active Users",
-    storeUrl: "https://chromewebstore.google.com/detail/superdev-pro/jlkikimlceonbmfjieipbonnglnlchhl",
-    rating: "Monetized SaaS Product",
-    description:
-      "Comprehensive developer utility suite with CSS live editing, font detection, viewport measurements, image extraction, and Twitter/X analytics. Built complete frontend extension UI, licensing tiers, and backend synchronization.",
-    tech: ["React.js", "Chrome Extension API", "Node.js", "SaaS Licensing", "Live DOM Manipulation"],
-  },
-  {
-    title: "Amazon Shift Sniper & Portal Recovery",
-    slug: "amazon-shift-sniper",
-    role: "Reverse Engineering Specialist",
-    badge: "High-Frequency Sub-Second",
-    upworkUrl: "https://www.upwork.com/freelancers/pasindupiumal?p=2062560822872154112",
-    rating: "Zero Downtime Booking",
-    description:
-      "High-frequency slot monitoring engine that injects into both Isolated and Main script worlds to discover dynamic session tokens and bypass rigid CSRF headers. Includes an intelligent 403 CloudFront cooldown bridge.",
-    tech: ["Main World Injection", "Token Interception", "CSRF Security", "403 Cooldown", "MutationObserver"],
-  },
-  {
-    title: "FullGrab & No-Code Web Scraper",
-    slug: "fullgrab-screenshot",
-    role: "Creator & Engineer",
-    badge: "Stripe Subscriptions",
-    storeUrl: "https://chromewebstore.google.com/detail/fullgrab-screenshot-full/jfpjeaefbhfogcponhjgpghahalcbplf",
-    siteUrl: "https://nocodewebscraper.com/",
-    rating: "Chrome Web Store Published",
-    description:
-      "FullGrab captures full-page viewport screenshots via smart scrolling and local canvas stitching with Stripe cloud storage plans. No-Code Web Scraper extracts tables, lists, and contact data into CSV/Excel.",
-    tech: ["Stripe Billing", "Canvas Stitching", "Data Scraping", "Offscreen API", "Export Pipelines"],
-  },
-];
+
 
 const ARCHITECTURE_PILLARS = [
   {
@@ -342,6 +282,65 @@ const ARCHITECTURE_PILLARS = [
   },
 ];
 
+const COMPARISON_POINTS = [
+  {
+    criteria: "Manifest V3 Mastery",
+    others: "Struggles with 30s service worker drops, CSP blocks, and store rejections",
+    pasindu: "Deep architecture with Offscreen API, chrome.storage hydration, and zero-drop workers",
+  },
+  {
+    criteria: "Complex DOM & SPAs",
+    others: "Relies on brittle setTimeout hacks that break when page layouts shift",
+    pasindu: "Event-driven MutationObservers, Shadow DOM traversal, and dual-world injection",
+  },
+  {
+    criteria: "Anti-Bot & Token Handling",
+    others: "Gets blocked by Cloudflare, CloudFront 403s, and CSRF token mismatches",
+    pasindu: "Session token discovery, randomized jitter intervals, and self-healing cooldown bridges",
+  },
+  {
+    criteria: "Chrome Web Store Approval",
+    others: "Vague permissions cause repeat review rejections and account warnings",
+    pasindu: "100% compliant packaging with minimal permissions and clear justifications",
+  },
+  {
+    criteria: "Pricing & Transparency",
+    others: "Unpredictable agency hourly rates ($80-$150/hr) with junior handoffs",
+    pasindu: "Direct senior engineer at $20/hr with transparent Upwork work diary or fixed escrow",
+  },
+];
+
+const PROCESS_STEPS = [
+  {
+    step: "01",
+    title: "Technical Discovery & Feasibility",
+    time: "Day 1",
+    description:
+      "We review your target website, API endpoints, DOM structures, and security hurdles (CSP, CORS, anti-bot). I provide a clear architecture blueprint and milestone breakdown.",
+  },
+  {
+    step: "02",
+    title: "Working Prototype & Core Engine",
+    time: "Days 2–5",
+    description:
+      "I engineer the core extension engine (content script injection, background service worker, AI/API integration) and provide a testable ZIP build for your feedback.",
+  },
+  {
+    step: "03",
+    title: "UI Polish & Edge-Case Hardening",
+    time: "Days 6–10",
+    description:
+      "Implementation of modern TailwindCSS / React HUD overlays, dark mode support, rate-limit cooldown bridges, and payment/licensing paywalls.",
+  },
+  {
+    step: "04",
+    title: "Store Submission & Production Launch",
+    time: "Final Phase",
+    description:
+      "Preparation of icons, screenshots, privacy policy justifications, and Chrome Web Store / Edge Add-ons submission assistance for smooth approval.",
+  },
+];
+
 const TESTIMONIALS = [
   {
     quote:
@@ -362,6 +361,13 @@ const TESTIMONIALS = [
       "Excellent understanding of Chrome extension development... successfully delivered a complex browser automation project where past attempts had stalled. Great engineer.",
     author: "Upwork Enterprise Client",
     context: "Real-Time WebSocket Sync & API Interception",
+    rating: 5,
+  },
+  {
+    quote:
+      "Pasindu is a top-tier developer who truly understands browser architecture. He delivered a fast, reliable extension that our users love. Will definitely hire again.",
+    author: "SaaS Founder",
+    context: "Chrome Web Store Developer Productivity Tool",
     rating: 5,
   },
 ];
@@ -396,7 +402,7 @@ const FAQS = [
 export default function ChromeExtensionDeveloperForHirePage() {
   return (
     <main className="relative min-h-screen pb-24 overflow-hidden">
-      {/* Background Ambience */}
+      {/* Schema.org Structured Data for Rich Search Snippets */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -411,7 +417,7 @@ export default function ChromeExtensionDeveloperForHirePage() {
       <div className="relative z-10 max-w-2xl mx-auto px-6 pt-10 sm:pt-14 space-y-14 sm:space-y-16">
         {/* HERO SECTION */}
         <section id="hero" className="text-center space-y-6">
-          {/* Creator Profile Card (Avatar with glowing green ring, verified badge, bio, pill & social buttons) */}
+          {/* Creator Profile Card (Avatar with glowing ring, verified badge, bio, pill & social buttons) */}
           <BlurFade delay={BLUR_FADE_DELAY}>
             <div className="flex flex-col items-center justify-center space-y-3.5">
               {/* Avatar with Lime Green Ring & Online Status Dot */}
@@ -460,11 +466,11 @@ export default function ChromeExtensionDeveloperForHirePage() {
                 href="https://elitefutbot.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-lime-500/30 bg-lime-500/10 hover:bg-lime-500/20 hover:border-lime-500/50 backdrop-blur-md text-[11px] sm:text-xs font-semibold text-lime-600 dark:text-lime-400 shadow-xs transition-all group"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-lime-600/30 bg-lime-500/10 hover:bg-lime-500/20 hover:border-lime-500/50 backdrop-blur-md text-[11px] sm:text-xs font-semibold text-lime-800 dark:text-lime-300 shadow-xs transition-all group"
               >
                 <span className="size-1.5 rounded-full bg-lime-500 animate-pulse" />
                 <span>
-                  Built <span className="underline underline-offset-2 font-bold group-hover:text-lime-400">FUT Snipe Bot</span> Chrome Extension: <strong>100k+ Users · $1M+ Revenue</strong>
+                  Built <span className="underline underline-offset-2 font-bold group-hover:text-lime-400">FUT Snipe Bot</span> Chrome Extension: <strong>100k+ Peak Users · $1M+ Revenue Generated</strong>
                 </span>
                 <ExternalLink className="size-3 opacity-70 group-hover:opacity-100 transition-opacity" />
               </Link>
@@ -530,19 +536,19 @@ export default function ChromeExtensionDeveloperForHirePage() {
           {/* Value Prop Headline & Subtitle */}
           <div className="space-y-3 pt-2 max-w-xl mx-auto">
             <BlurFade delay={BLUR_FADE_DELAY * 2}>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight leading-snug">
-                Hire Expert Freelance{" "}
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.2] text-balance">
+                Hire Expert Freelance <br className="hidden sm:inline" />
                 <span className="bg-linear-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                  Chrome Extension
-                </span>{" "}
-                Developer (Manifest V3)
+                  Chrome Extension Developer
+                </span> <br className="hidden sm:inline" />
+                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground/90">(Manifest V3)</span>
               </h1>
             </BlurFade>
 
             <BlurFade delay={BLUR_FADE_DELAY * 3}>
               <p className="text-muted-foreground text-xs sm:text-sm max-w-lg mx-auto leading-relaxed text-pretty">
                 Need a production-ready browser extension built from scratch, scaled to thousands of users, or rescued from
-                complex bugs? I engineer high-performance **Manifest V3 Chrome extensions**, AI floating copilots,
+                complex bugs? I engineer high-performance <strong>Manifest V3 Chrome extensions</strong>, AI floating copilots,
                 multi-ATS form automations, and monetized SaaS products.
               </p>
             </BlurFade>
@@ -556,12 +562,12 @@ export default function ChromeExtensionDeveloperForHirePage() {
                 <div className="text-[11px] text-muted-foreground font-medium">Real-World Projects</div>
               </div>
               <div className="p-3 rounded-xl border bg-background/50 backdrop-blur-md">
-                <div className="text-xl sm:text-2xl font-bold text-amber-500 dark:text-amber-400">100k+</div>
-                <div className="text-[11px] text-muted-foreground font-medium">Peak Bot Users</div>
+                <div className="text-xl sm:text-2xl font-bold text-amber-600 dark:text-amber-400">100k+</div>
+                <div className="text-[11px] text-muted-foreground font-medium">Peak Users</div>
               </div>
               <div className="p-3 rounded-xl border bg-background/50 backdrop-blur-md">
-                <div className="text-xl sm:text-2xl font-bold text-emerald-500 dark:text-emerald-400">$1M+</div>
-                <div className="text-[11px] text-muted-foreground font-medium">Extension Revenue</div>
+                <div className="text-xl sm:text-2xl font-bold text-emerald-700 dark:text-emerald-400">$1M+</div>
+                <div className="text-[11px] text-muted-foreground font-medium">Revenue Generated</div>
               </div>
               <div className="p-3 rounded-xl border bg-background/50 backdrop-blur-md">
                 <div className="text-xl sm:text-2xl font-bold text-primary">$20/hr</div>
@@ -580,7 +586,7 @@ export default function ChromeExtensionDeveloperForHirePage() {
               >
                 <Button size="sm" className="rounded-lg h-9 px-5 text-xs font-bold shadow-md hover:scale-102 transition-all w-full sm:w-auto">
                   <Icons.upwork className="mr-1.5 size-4 fill-current" />
-                  Hire on Upwork
+                  Hire on Upwork ($20/hr)
                   <ArrowRight className="ml-1.5 size-3.5" />
                 </Button>
               </Link>
@@ -619,10 +625,10 @@ export default function ChromeExtensionDeveloperForHirePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             <div className="p-4 sm:p-5 rounded-xl border border-destructive/20 bg-destructive/5 space-y-3">
-              <div className="flex items-center gap-1.5 text-destructive font-bold text-sm">
+              <div className="flex items-center gap-1.5 text-red-700 dark:text-red-400 font-bold text-sm">
                 <span>✕</span> Common Failure Points
               </div>
-              <ul className="space-y-2 text-xs text-muted-foreground">
+              <ul className="space-y-2 text-xs text-foreground/85 dark:text-muted-foreground">
                 <li className="flex items-start gap-1.5">
                   <span className="text-destructive font-bold">•</span>
                   <span><strong>Service Worker Inactivity:</strong> MV3 kills background workers after 30s, losing timers and socket connections.</span>
@@ -646,7 +652,7 @@ export default function ChromeExtensionDeveloperForHirePage() {
               <div className="flex items-center gap-1.5 text-primary font-bold text-sm">
                 <CheckCircle2 className="size-4" /> How I Build Resilient Systems
               </div>
-              <ul className="space-y-2 text-xs text-muted-foreground">
+              <ul className="space-y-2 text-xs text-foreground/85 dark:text-muted-foreground">
                 <li className="flex items-start gap-1.5">
                   <span className="text-primary font-bold">✓</span>
                   <span><strong>State-Hydrated Architecture:</strong> Chrome Offscreen API keep-alives and persistent storage keep tasks live.</span>
@@ -691,14 +697,14 @@ export default function ChromeExtensionDeveloperForHirePage() {
                   </div>
                   <div className="space-y-1.5 flex-1">
                     <h3 className="font-semibold text-sm leading-snug">{svc.title}</h3>
-                    <span className="inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-muted text-muted-foreground">
+                    <span className="inline-block text-[10px] font-mono px-2 py-0.5 rounded bg-muted text-foreground/90 font-medium border border-border/40">
                       {svc.badge}
                     </span>
                     <p className="text-xs text-muted-foreground leading-relaxed pt-1">
                       {svc.description}
                     </p>
                   </div>
-                  <div className="pt-3 mt-auto border-t text-[11px] text-muted-foreground/80 font-medium">
+                  <div className="pt-3 mt-auto border-t text-[11px] text-muted-foreground font-medium">
                     {svc.projects}
                   </div>
                 </div>
@@ -707,99 +713,134 @@ export default function ChromeExtensionDeveloperForHirePage() {
           </div>
         </section>
 
-        {/* VERIFIED CASE STUDIES & LIVE STORE LINKS */}
+        {/* CURATED FLAGSHIP CASE STUDIES FROM MASTER PROJECTS */}
         <section id="case-studies" className="space-y-6">
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border bg-primary/5 text-primary text-[11px] font-semibold">
               Real Track Record
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
-              Verified Case Studies & Live Proof
+              Flagship Case Studies & Live Proof
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-xs sm:text-sm">
-              Real products published on the Chrome Web Store, paid client contracts, and verified 5.0 Upwork ratings.
+              Explore verified flagship Chrome extensions with live Chrome Web Store listings, active web platforms, and production architecture.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-[800px] mx-auto auto-rows-fr">
+            {DATA.projects.map((project, id) => (
+              <BlurFade
+                key={project.title}
+                delay={BLUR_FADE_DELAY * 2 + id * 0.04}
+                className="h-full"
+              >
+                <ProjectCard
+                  href={project.href || "/projects"}
+                  key={project.title}
+                  title={project.title}
+                  description={project.description}
+                  dates={project.dates}
+                  tags={project.technologies}
+                  image={project.image}
+                  video={"video" in project ? (project as any).video : ""}
+                  links={"links" in project ? (project as any).links : []}
+                />
+              </BlurFade>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center pt-2">
+            <Link href="/projects">
+              <Button
+                variant="outline"
+                className="rounded-xl h-11 px-8 font-semibold shadow-xs hover:shadow-md transition-all group border-primary/20 hover:border-primary/50 text-xs sm:text-sm"
+              >
+                Explore All 23+ Projects & Deep Case Studies
+                <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* COMPARISON MATRIX ("WHY CHOOSE PASINDU") */}
+        <section id="why-choose-me" className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border bg-primary/5 text-primary text-[11px] font-semibold">
+              The Specialist Advantage
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
+              Why Founders & Teams Choose Pasindu
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto text-xs sm:text-sm">
+              How dedicated browser extension engineering compares to generalist freelance developers.
+            </p>
+          </div>
+
+          <div className="border rounded-2xl overflow-hidden bg-background/50 backdrop-blur-md shadow-xs">
+            <div className="w-full overflow-x-auto">
+              <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[500px]">
+                <thead>
+                  <tr className="border-b bg-muted/60 text-foreground font-bold">
+                    <th className="p-3 sm:p-4 text-xs font-bold uppercase tracking-wider">Feature / Requirement</th>
+                    <th className="p-3 sm:p-4 text-xs font-bold uppercase tracking-wider text-muted-foreground">Typical Freelancers</th>
+                    <th className="p-3 sm:p-4 text-xs font-bold uppercase tracking-wider text-primary">Pasindu Piumal</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/60">
+                  {COMPARISON_POINTS.map((item, idx) => (
+                    <tr key={idx} className="hover:bg-muted/20 transition-colors">
+                      <td className="p-3 sm:p-4 font-bold text-foreground align-top text-xs sm:text-sm">
+                        {item.criteria}
+                      </td>
+                      <td className="p-3 sm:p-4 text-muted-foreground align-top text-xs leading-relaxed">
+                        <span className="text-destructive font-bold mr-1">✕</span>
+                        {item.others}
+                      </td>
+                      <td className="p-3 sm:p-4 text-foreground/90 font-medium align-top text-xs leading-relaxed bg-primary/5">
+                        <span className="text-primary font-bold mr-1">✓</span>
+                        {item.pasindu}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* 4-STEP AGILE DELIVERY PROCESS */}
+        <section id="process" className="space-y-6">
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border bg-primary/5 text-primary text-[11px] font-semibold">
+              Predictable Delivery
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
+              4-Step Fast Turnaround Process
+            </h2>
+            <p className="text-muted-foreground max-w-lg mx-auto text-xs sm:text-sm">
+              From initial architecture discovery to published Chrome Web Store listing.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            {CASE_STUDIES.map((project, idx) => (
-              <BlurFade key={project.title} delay={BLUR_FADE_DELAY * (idx + 1)}>
-                <div className="flex flex-col justify-between h-full p-4 sm:p-5 rounded-xl border bg-background/40 backdrop-blur-md hover:border-primary/40 transition-all space-y-3.5">
-                  <div className="space-y-2">
-                    <div>
-                      <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 mb-1.5">
-                        {project.badge}
-                      </span>
-                      <h3 className="text-sm font-bold leading-snug">{project.title}</h3>
-                      <p className="text-[11px] text-muted-foreground">{project.role} • {project.rating}</p>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 pt-1">
-                    <div className="flex flex-wrap gap-1">
-                      {project.tech.map((t) => (
-                        <span
-                          key={t}
-                          className="px-1.5 py-0.5 rounded text-[10px] bg-muted font-medium text-foreground/80 border"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="flex flex-wrap items-center gap-2.5 pt-1 text-xs">
-                      {project.slug && (
-                        <Link
-                          href={`/projects/${project.slug}`}
-                          className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline"
-                        >
-                          Read Case Study
-                          <ArrowRight className="size-2.5" />
-                        </Link>
-                      )}
-                      {project.storeUrl && (
-                        <Link
-                          href={project.storeUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-muted-foreground hover:text-foreground"
-                        >
-                          <Icons.store className="size-3" />
-                          Chrome Web Store
-                          <ExternalLink className="size-2.5" />
-                        </Link>
-                      )}
-                      {project.siteUrl && (
-                        <Link
-                          href={project.siteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-muted-foreground hover:text-foreground"
-                        >
-                          <Icons.globe className="size-3" />
-                          Live Website
-                          <ExternalLink className="size-2.5" />
-                        </Link>
-                      )}
-                      {project.upworkUrl && (
-                        <Link
-                          href={project.upworkUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
-                        >
-                          <Icons.upwork className="size-3 fill-current" />
-                          Upwork Verified
-                          <ExternalLink className="size-2.5" />
-                        </Link>
-                      )}
-                    </div>
-                  </div>
+            {PROCESS_STEPS.map((item) => (
+              <div
+                key={item.step}
+                className="p-4 sm:p-5 rounded-xl border bg-background/50 backdrop-blur-sm space-y-2 hover:border-primary/40 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-primary/10 text-primary">
+                    STEP {item.step}
+                  </span>
+                  <span className="text-[11px] font-semibold text-foreground/80 dark:text-muted-foreground">
+                    {item.time}
+                  </span>
                 </div>
-              </BlurFade>
+                <h3 className="font-bold text-sm text-foreground">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </div>
         </section>
@@ -850,10 +891,10 @@ export default function ChromeExtensionDeveloperForHirePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {TESTIMONIALS.map((testimonial, idx) => (
               <BlurFade key={idx} delay={BLUR_FADE_DELAY * (idx + 1)}>
-                <div className="flex flex-col justify-between p-4 sm:p-5 rounded-xl border bg-background/50 backdrop-blur-sm space-y-3">
+                <div className="flex flex-col justify-between h-full p-4 sm:p-5 rounded-xl border bg-background/50 backdrop-blur-sm space-y-3">
                   <div className="space-y-2">
                     <div className="flex items-center gap-1 text-amber-500">
                       {[...Array(testimonial.rating)].map((_, i) => (
@@ -866,7 +907,7 @@ export default function ChromeExtensionDeveloperForHirePage() {
                   </div>
                   <div className="pt-2 border-t space-y-0.5">
                     <div className="font-bold text-xs">{testimonial.author}</div>
-                    <div className="text-[11px] text-muted-foreground">{testimonial.context}</div>
+                    <div className="text-[11px] text-foreground/80 dark:text-muted-foreground font-medium">{testimonial.context}</div>
                   </div>
                 </div>
               </BlurFade>
@@ -917,12 +958,12 @@ export default function ChromeExtensionDeveloperForHirePage() {
               <div className="space-y-2.5">
                 <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-primary/10 text-primary">Hourly</span>
                 <div className="text-lg font-bold flex items-baseline gap-1">
-                  $20 <span className="text-xs font-normal text-muted-foreground">/ hr</span>
+                  $20 <span className="text-xs font-normal text-foreground/80 dark:text-muted-foreground">/ hr</span>
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-xs text-foreground/80 dark:text-muted-foreground leading-relaxed">
                   Ideal for agile development, maintenance, bug fixes, or dedicated engineering.
                 </p>
-                <ul className="space-y-1.5 text-[11px] text-muted-foreground pt-1">
+                <ul className="space-y-1.5 text-[11px] text-foreground/80 dark:text-muted-foreground pt-1">
                   <li className="flex items-center gap-1.5">
                     <CheckCircle2 className="size-3 text-primary" /> Upwork Top Rated
                   </li>

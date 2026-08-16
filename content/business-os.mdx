@@ -3,29 +3,51 @@ title: "Business OS — Google Sheets Web App & Enterprise Management Suite"
 publishedAt: "2025-12-15"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Full-scale business management web application built on Google Apps Script and Google Sheets database. Eliminates manual spreadsheet editing with an interactive modern dashboard."
+summary: "Full-scale business management web application built on Google Apps Script using Google Sheets as a relational database. Eliminates manual cell editing with a modern interactive single-page app interface."
 image: "/script3.png"
 video: "/script3.mp4"
-content: ""
 ---
 
-# Business OS — Google Sheets Web App & Management Suite
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Google Apps Script Web App</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Google Sheets API Database</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">HTML5 • CSS • JavaScript</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Google Apps Script SPA</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Google Sheets DB</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Google Drive PDF Engine</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">HTML5 • CSS • JavaScript</span>
 </div>
 
 ## Executive Summary
 
-**Business OS** transforms a standard Google Sheet into an interactive, enterprise-grade business management portal with modal forms, financial analytics, and automated Google Drive report generation.
+**Business OS** transforms a raw Google Sheet into an interactive single-page web application (SPA). Deployed via Google Apps Script HTML Service, the application provides small businesses and freelancers with a professional dashboard, client CRM, invoice generator, and financial analytics module without exposing spreadsheet formulas or raw grid cells.
+
+- **Backend**: Google Sheets API & Google Apps Script (`HtmlService`, `SpreadsheetApp`).
+- **Data Security**: Operates within the user's private Google Drive environment with zero external server hosting costs.
 
 ---
 
-## Hire an Expert Automation Developer
+## Technical Features & Solutions
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+### 1. Custom Single-Page Application (SPA) Layer
+Renders a responsive web interface directly over Google Apps Script's `HtmlService`. Uses client-side JavaScript (`google.script.run`) with optimistic state updates to eliminate iframe page reloads.
+
+### 2. Form Validation & Transaction Locks
+Applies strict server-side validation in Apps Script handlers, using batch data updates and mutex execution locks to prevent sheet concurrency collisions.
+
+### 3. Automated PDF Invoice Generation
+Converts HTML invoice templates into formatted PDF documents saved automatically into designated Google Drive folders with email delivery triggers.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Business OS architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

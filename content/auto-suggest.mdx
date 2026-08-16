@@ -1,0 +1,74 @@
+---
+title: "Auto Suggest — AI Writing Assistant & Contextual Text Completion Chrome Extension"
+publishedAt: "2025-08-15"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Manifest V3 Chrome Extension delivering real-time, context-aware AI text completion and autocomplete suggestions across any web text field using OpenAI API and low-latency SSE streaming."
+image: "/auto-suggest.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Extension</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Real-Time Low Latency</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">OpenAI GPT-4o API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">DOM Range & Selection API</span>
+</div>
+
+## Executive Summary
+
+**Auto Suggest** is a high-performance browser extension that turns any input field, textarea, or rich text editor on the web into a smart, AI-powered writing surface. Powered by OpenAI's streaming API, the extension analyzes surrounding DOM context and user typing history to offer instant inline autocomplete suggestions with zero latency lag.
+
+- **Use Cases**: Email drafting, content creation, customer support responses, and social media posting.
+- **Key Capability**: Contextual awareness that reads active page headers and surrounding text to generate relevant completions.
+- **Latency**: Under 150ms time-to-first-token using Server-Sent Events (SSE).
+
+---
+
+## Technical Architecture & Engineering Solutions
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Chrome Browser (MV3)                     │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Active Input Listener       │   │ Shadow DOM Overlay  │  │
+│  │ (DOM Range & Selection API) │──►│ (Ghost Text & Popup)│  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Context Payload             │ Ghost Text   │
+│                 ▼                             │ Insertion    │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Service Worker & OpenAI SSE Stream Listener           │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                        OpenAI GPT-4o API
+```
+
+### 1. Cross-Site Contenteditable & Textarea Hooking
+Standard inputs and iframe-based WYSIWYG editors (Draft.js, Quill, TinyMCE, Gmail composer) handle text selection differently. I engineered a universal DOM listener using the Selection & Range API to capture caret positioning without breaking native editor state.
+
+### 2. Low-Latency SSE Token Streaming
+Rather than waiting for complete API payloads, the service worker listens to streamed Server-Sent Events from OpenAI, rendering "ghost text" inline in real-time as the user types.
+
+### 3. Ghost Text Inline Rendering
+Suggestions are presented using an unobtrusive inline overlay. Pressing `Tab` or `Right Arrow` commits the suggestion into the target element without disturbing undo/redo history.
+
+---
+
+## Keywords & Search Intent
+
+- **Target Keywords**: AI writing assistant Chrome extension, Manifest V3 text completion, inline autocomplete extension developer, OpenAI browser extension developer, custom Chrome extension developer for hire.
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Auto Suggest architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

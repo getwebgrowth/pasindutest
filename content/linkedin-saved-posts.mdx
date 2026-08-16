@@ -1,0 +1,88 @@
+---
+title: "OneLearning — LinkedIn Saved Posts Manager & Knowledge Base Chrome Extension"
+publishedAt: "2025-03-05"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Chrome extension for importing, tagging, searching, and organizing saved LinkedIn posts into a personal searchable knowledge base with Notion export."
+image: "/Linkedin_Scraper.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">LinkedIn Extension</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Knowledge Base</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">IndexedDB Storage</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
+</div>
+
+## Executive Summary
+
+**OneLearning** (LinkedIn Saved Posts Manager) turns LinkedIn's basic bookmarking feature into a fully organized, searchable knowledge management workspace. Users import saved items with a single click, categorize posts using custom color-coded tags (Startup, Marketing, Finance, Education, Health), attach personal study notes, and export insights to Markdown or Notion.
+
+- **Problem Solved**: LinkedIn buries saved posts deep inside user profile menus without search, tagging, or export capabilities.
+- **Key Features**: 1-click import, custom tag taxonomy manager, instant search filtering, and offline IndexedDB persistence.
+
+---
+
+## User Interface & Tag Management Showcase
+
+The extension opens as a side-by-side workspace next to LinkedIn, providing real-time post importing, tag organization, and note-taking:
+
+![OneLearning LinkedIn Saved Posts Manager Interface](/Linkedin_Scraper.png)
+
+### Sidepanel Features:
+- **1-Click Import**: Scrapes saved posts from `linkedin.com/my-items/saved-posts/` automatically.
+- **Custom Tag Manager**: Assign color-coded categories (Marketing, Startup, Finance, Health) to filter posts instantaneously.
+- **Note-Taking Canvas**: Attach personal thoughts and key takeaways directly to saved post cards.
+
+![OneLearning Custom Tag Management Modal](/onelearning-tags.png)
+
+---
+
+## Engineering Architecture & System Design
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   LinkedIn Browser Tab (MV3)                │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Saved Posts DOM Parser      │   │ Sidepanel React UI  │  │
+│  │ (linkedin.com/my-items/)    │──►│ (Filter & Tag HUD)  │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Parsed Post Cards           │ Instant Search│
+│                 ▼                             │ Query Results │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ IndexedDB Local Vector & Tag Taxonomy Store           │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                   Notion & Markdown Export Bridge
+```
+
+### 1. Resilient LinkedIn DOM Parser
+Injects content scripts to parse saved posts (`linkedin.com/my-items/saved-posts/`), extracting post copy, media attachments, author profiles, and timestamps cleanly without breaking when LinkedIn updates CSS layout classes.
+
+### 2. Sidepanel UI Componentry
+Built using React 18 and Tailwind CSS inside Chrome's native SidePanel API, giving users a side-by-side workspace while browsing LinkedIn.
+
+### 3. Local-First Offline Storage
+All saved items and annotations are stored locally in `IndexedDB`, guaranteeing sub-millisecond search performance even with thousands of saved posts.
+
+---
+
+## SEO Keywords & Search Intent
+
+- **Keywords**: LinkedIn saved posts extension, LinkedIn bookmark manager Chrome extension, SidePanel extension developer, Manifest V3 Chrome developer for hire.
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is OneLearning architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

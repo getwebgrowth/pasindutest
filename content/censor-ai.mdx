@@ -1,20 +1,17 @@
 ---
-title: "Censor AI — Gmail AI Email Writing & Tone Rewriter Chrome Extension (OpenAI API)"
+title: "Censor AI — Gmail AI Email Writing & Tone Rewriter Chrome Extension"
 publishedAt: "2025-08-10"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
 summary: "Published Chrome Web Store extension for Gmail. Injects context-aware OpenAI text completion to instantly rewrite, polish, and tone-adjust draft emails directly inside the Gmail compose window."
 image: "/censor-ai.png"
-content: ""
 ---
-
-# Censor AI — Gmail AI Email Writing & Tone Rewriter Chrome Extension
 
 <div className="flex flex-wrap gap-2 my-4">
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Chrome Web Store Live</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">OpenAI API Integration</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Gmail DOM Injection</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Manifest V3</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">OpenAI GPT-4o API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Gmail DOM Injection</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
@@ -26,19 +23,45 @@ content: ""
 
 ---
 
-## Technical Stack
+## Engineering Architecture & System Design
 
-- **Extension Framework**: Manifest V3, Content Scripts, DOM MutationObservers.
-- **AI Backend**: OpenAI API (GPT-4o), Token Streaming.
-- **Frontend**: Tailwind CSS, Shadow DOM Injection.
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Gmail Browser Tab (MV3)                  │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Gmail DOM Mutation Listener │   │ Custom Floating HUD │  │
+│  │ (Active Compose Iframe)     │──►│ (Tone Selector UI)  │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Extracted Draft Text        │ Transformed  │
+│                 ▼                             │ Draft Insert │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Background Service Worker & OpenAI Stream Listener    │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                        OpenAI GPT-4o API
+```
+
+### 1. Gmail Dynamic Compose Window Injector
+Gmail dynamically generates compose windows with nested contenteditable divs. Censor AI uses a robust `MutationObserver` pipeline to detect new compose frames, attaching an unobtrusive AI floating toolbar without overriding native email state.
+
+### 2. Multi-Tone Prompt Pipeline
+Structures the user's raw draft text into context-aware OpenAI prompts, returning formatted HTML body replacements that preserve email line breaks and salutations.
 
 ---
 
-## Hire an Expert AI Extension Developer
 
-Need an AI writing copilot, email integration, or custom LLM browser extension?
+---
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Censor AI architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

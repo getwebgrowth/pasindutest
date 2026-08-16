@@ -1,53 +1,67 @@
 ---
-title: "No-Code Web Scraper — Shadow DOM Data Extraction & Google Sheets Sync Chrome Extension"
+title: "No-Code Web Scraper — Shadow DOM Traversal & Google Sheets Sync Chrome Extension"
 publishedAt: "2026-03-01"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
 summary: "Visual point-and-click web scraping Chrome extension (Manifest V3). Features deep Shadow DOM traversal, multi-page pagination crawl, and instant export to Google Sheets, Airtable, and CSV."
 image: "/Linkedin_Scraper.png"
-content: ""
 ---
-
-# No-Code Web Scraper — Shadow DOM Data Extraction & Google Sheets Sync
 
 <div className="flex flex-wrap gap-2 my-4">
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Live Tool Platform</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Point-and-Click Selector</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Shadow DOM Traversal</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Google Sheets / CSV Export</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Point-and-Click Selector</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Shadow DOM Traversal</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
-**No-Code Web Scraper** is a point-and-click visual data extraction Chrome extension designed for growth marketers, lead researchers, and data analysts. Users can simply hover and click on any webpage element (tables, product cards, contact lists, search results) to define extraction recipes that automatically navigate paginated lists and export clean structured data.
+**No-Code Web Scraper** is a point-and-click visual data extraction Chrome extension designed for growth marketers, lead researchers, and data analysts. Users simply hover and click on webpage elements (tables, product cards, contact lists) to build extraction recipes that automatically navigate paginated lists and export clean structured data into Google Sheets, Airtable, or CSV files.
 
-- **Website**: [nocodewebscraper.com](https://nocodewebscraper.com/)
+- **Platform URL**: [nocodewebscraper.com](https://nocodewebscraper.com/)
 - **Specialty**: Deep Shadow DOM parsing and automated multi-page pagination.
 
 ---
 
-## Key Features
+## Engineering Architecture & System Design
 
-1. **Visual Selector Engine**: Point and click on 2 sample elements to automatically generate optimal, resilient CSS/XPath selectors for the entire list.
-2. **Shadow DOM Penetration**: Traverses closed and open Shadow DOM boundaries in modern Web Components and Angular/React applications.
-3. **Automated Pagination & Infinite Scroll**: Automatically follows "Next Page" buttons or scrolls to the bottom of the page to scrape complete datasets.
-4. **Cloud & Webhook Integration**: Push scraped data straight into Google Sheets, Airtable, or custom REST webhooks in real time.
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Chrome Browser Tab (MV3)                 │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Point & Click Visual HUD    │   │ Shadow DOM Recursive│  │
+│  │ (Element Highlight & Hover) │──►│ Traversal Engine    │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Extracted DOM Nodes         │ Resilient    │
+│                 ▼                             │ CSS Generator│
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Background Offscreen Worker & CSV/Google Sheets Sync  │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                     Google Sheets API / Airtable
+```
+
+### 1. Shadow DOM Traversal Algorithm
+Standard `document.querySelector` fails on modern Web Components using Shadow DOM. I built a recursive tree crawler that traverses `shadowRoot` elements recursively to extract text from custom web component trees.
+
+### 2. Resilient Selector Generator
+Evaluates structural DOM paths between clicked sample elements, automatically building dynamic CSS/XPath selectors that resist site redesigns.
 
 ---
 
-## Technical Stack
-
-- **Extension Framework**: Manifest V3, MutationObserver, DOM Range Selector.
-- **Background Processing**: Chrome Offscreen API, Web Workers.
-- **Export Formats**: XLSX, CSV, JSON, Google Sheets API.
 
 ---
 
-## Hire an Expert Scraping & Extension Developer
+## Frequently Asked Questions
 
-Need a custom web scraper, lead extraction bot, or data pipeline extension?
+<FaqCard 
+  question="How is No-Code Web Scraper architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

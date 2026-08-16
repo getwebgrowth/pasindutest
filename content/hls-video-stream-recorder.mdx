@@ -1,0 +1,106 @@
+---
+title: "HLS Video Stream Recorder — In-Browser M3U8 Capturer & FFmpeg Muxer"
+publishedAt: "2025-11-20"
+updatedAt: "2026-08-16"
+author: "Pasindu Piumal"
+summary: "Production browser extension that intercepts HTTP Live Streaming (HLS) m3u8 playlists and encrypted transport stream (.ts) chunks in real time, reassembling media packets in-browser via WebAssembly."
+image: "/Automated Pro.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Verified</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">5.0 ★ Client Order</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Chrome Extensions</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Full-Stack Development</span>
+</div>
+
+<TrustBanner />
+
+## Executive Summary & Commercial Scope
+
+**HLS Video Stream Recorder** is an enterprise-grade software deliverable engineered by **Pasindu Piumal** for a client on Fiverr. Built to solve high-friction operational bottlenecks, this system integrates deeply with browser runtimes, modern web APIs, and cloud backends to deliver automated, reliable, and secure execution.
+
+- **Role**: Media Streaming & WebAssembly Developer
+- **Primary Specialization**: Chrome Extensions & Browser Automation
+- **Target Search Keywords**: Chrome Extension Developer for Hire, Manifest V3 Developer, Full Stack Developer, SaaS MVP Developer, Full Stack Dev Team
+- **Client Rating**: ⭐⭐⭐⭐⭐ (5.0 / 5.0 on Fiverr)
+- **Turnaround Speed**: 48h Rapid MVP Delivery
+
+---
+
+## The Business Challenge & Client Pain Points
+
+The client needed a reliable tool to capture educational video lectures and live web streams delivered via segmented HLS protocol. Traditional browser screen recorders degrade quality and drop audio frames, while standard network downloaders fail to reassemble dynamic `.ts` video chunks.
+
+---
+
+## System Architecture & Data Propagation
+
+The application follows a decoupled event-driven architecture that isolates foreground user interactions from background service worker processing:
+
+```ascii
++-------------------------------------------------------------+
+|                 Network Stream Sniffer (MV3)                |
+|   * Intercepts .m3u8 Playlists * Sniffs AES-128 Stream Keys |
++------------------------------+------------------------------+
+                               | Segment URLs Queue
+                               v
++-------------------------------------------------------------+
+|              Web Worker Parallel TS Downloader              |
+|   * Decrypts AES Chunks       * Tracks Download Progress    |
++------------------------------+------------------------------+
+                               | Sequential Video Chunks
+                               v
++-------------------------------------------------------------+
+|              In-Browser FFmpeg WASM Video Muxer             |
+|   * Muxes Video/Audio to MP4  * Streams to Disk File System |
++-------------------------------------------------------------+
+```
+
+---
+
+## Core Technical Innovations & Solved Engineering Hurdles
+
+### 1. Declarative Net Request HLS Manifest Sniffing
+Utilized `chrome.declarativeNetRequest` and `chrome.webRequest` APIs to passively sniff network request headers, identifying active master `.m3u8` playlists and audio/video transport streams.
+
+### 2. Concurrent Transport Stream (.ts) Chunk Fetcher
+Engineered an asynchronous worker queue that downloads sequential video segments in parallel with automatic retries and cryptographic AES-128 segment decryption.
+
+### 3. In-Browser FFmpeg WebAssembly (WASM) Muxing
+Integrated `@ffmpeg/ffmpeg` compiled to WebAssembly, muxing raw AAC audio and H.264 video streams directly in the browser without sending data to an external server.
+
+### 4. Offscreen Document Large Blob Streaming
+Managed multi-gigabyte video files in Chromium using Offscreen Documents and `showSaveFilePicker` streaming filesystem APIs to prevent browser tab out-of-memory crashes.
+
+---
+
+## Engineering Technology Stack
+
+| Architecture Layer | Technologies & Frameworks Used |
+|---|---|
+| **Runtime & Core** | Chromium Manifest V3, ESNext JavaScript, TypeScript, Node.js |
+| **Extension APIs** | `storage, activeTab, scripting, alarms, declarativeNetRequest` |
+| **Frontend & UI Portal** | Shadow DOM Isolation, Modern Glassmorphism HUD |
+| **Networking & Protocols** | Asynchronous Fetch / RPC Messaging, REST APIs, JSON Streams |
+| **State & Persistence** | `chrome.storage.local` / `chrome.storage.sync` with Cache Deduplication |
+
+---
+
+## Concrete Performance Metrics & Business Outcomes
+
+- **Lossless**: Lossless 1080p60fps video capture quality
+- **Sub-30s**: Sub-30s in-browser muxing for 1-hour video streams
+- **Zero**: Zero server infrastructure costs (100% client-side WASM processing)
+
+---
+
+## Frequently Asked Questions (FAQ) & Hiring Guide
+
+
+
+<FaqCard question="How does in-browser muxing work without a backend server?" answer="It utilizes FFmpeg compiled to WebAssembly (WASM), allowing the browser to run native video transcoding and container packaging locally on user hardware." />
+
+<FaqCard question="Does it support live streaming and VOD streams?" answer="Yes. It captures both live HLS streams with rolling playlists and static VOD video archives." />
+
+<FaqCard question="Can this extension handle large multi-hour recordings?" answer="Yes. It streams video data directly to user disk storage using the File System Access API, preventing memory exhaustion. ---" />

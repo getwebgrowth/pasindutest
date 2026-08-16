@@ -5,16 +5,13 @@ updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
 summary: "High-scale real-time browser extension and automated transfer market sniper for EA FC / FIFA. Scaled to 100,000+ active users and enabled over $1M+ in software revenue with sub-second WebSocket listeners, rate-limit throttling, and anti-ban behavioral randomization."
 image: "/Automated Pro (1).png"
-content: ""
 ---
 
-# FUT Snipe Bot (EliteFutBot) — High-Scale Transfer Engine
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">100,000+ Active Users</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">$1M+ Revenue Generated</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">100,000+ Active Users</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">$1M+ Revenue Generated</span>
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Chrome Extension</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">WebSockets</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">WebSockets</span>
 </div>
 
 ## Executive Summary
@@ -25,6 +22,20 @@ content: ""
 - **Revenue**: Powered over **$1,000,000+ in software subscription and licensing revenue**.
 - **Performance**: Sub-250ms search-to-buy execution loop with intelligent jitter to simulate natural human inputs.
 - **Live Platform**: [elitefutbot.com](https://elitefutbot.com/)
+
+---
+
+## User Interface & Injected Control Panels
+
+The extension renders a sleek, non-intrusive React HUD directly over the EA Sports FC Web Application, providing full control over pricing bounds, safety modes, and real-time profit analytics:
+
+![FUT Snipe Bot Injected HUD Overlay](/Automated Pro (1).png)
+
+### Core UI Modules:
+- **Main Trading HUD**: Displays active card targets, live console search latency, safe/caution/risky mode toggles, and total profit counters ($199,703+ accumulated profit).
+- **Sidebar Options & Automation Rules**: Customizable selling price calculators, automatic FUTBIN price fetching, rate-limit controllers (RPM), and Discord notification webhooks.
+
+![FUT Snipe Bot Custom Sidebar UI Panel](/Automated Pro (2).png)
 
 ---
 
@@ -86,13 +97,14 @@ Every successful snipe, profit calculation, and market threshold alert is stream
 
 ---
 
-## Hire an Expert Chrome Extension Developer
+## Frequently Asked Questions
 
-Need a high-frequency automation engine, trading bot, or custom Manifest V3 Chrome extension built to handle enterprise scale?
+<FaqCard 
+  question="How is FUT Snipe Bot (EliteFutBot) architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
 
-I engineer high-performance browser extensions, AI copilots, and automation tools with verified 100% Upwork Job Success.
-
-- **Hourly Rate**: $20/hr (Tracked via Upwork)
-- **Fixed Milestones**: Custom scoped deliverables with transparent timelines
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Direct Contact**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com) | [Hire Me on Upwork](https://www.upwork.com/freelancers/pasindupiumal)
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

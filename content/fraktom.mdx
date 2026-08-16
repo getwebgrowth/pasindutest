@@ -1,35 +1,50 @@
 ---
-title: "Fraktom — Interactive Crypto Trading Simulation Platform"
+title: "Fraktom — Simulated Bonding Curve & Crypto Trading Platform"
 publishedAt: "2025-07-15"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Modern educational crypto trading simulation platform inspired by pump.fun. Practice simulated trading, climb global leaderboards, and master market mechanics with zero capital risk."
+summary: "Modern educational crypto trading simulation platform inspired by pump.fun. Practice simulated trading on dynamic bonding curves, climb global leaderboards, and test market strategies with zero risk."
 image: "/fraktom.png"
 video: "/fraktom.mp4"
-content: ""
 ---
-
-# Fraktom — Interactive Crypto Trading Simulation Platform
 
 <div className="flex flex-wrap gap-2 my-4">
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Live Trading Simulator</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Real-Time Price Engine</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Gamified Leaderboards</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Next.js • TypeScript</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Bonding Curve Pricing</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Gamified Leaderboard</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Next.js • TypeScript</span>
 </div>
 
 ## Executive Summary
 
-**Fraktom** is a gamified trading playground allowing new and seasoned traders to test trading strategies in a hyper-realistic simulated orderbook environment.
+**Fraktom** is a gamified crypto trading simulation platform that allows traders to experiment with high-volatility token dynamics in a risk-free environment. Inspired by bonding curve token launchers like pump.fun, Fraktom features dynamic mathematical price curves, mock liquidity pools, real-time portfolio performance tracking, and competitive trader leaderboards.
 
 - **Live URL**: [fraktom.vercel.app](https://fraktom.vercel.app/)
-- **Source Code**: [github.com/pasindupiumal03/Fraktom_Homepage](https://github.com/pasindupiumal03/Fraktom_Homepage)
+- **GitHub Repository**: [github.com/pasindupiumal03/Fraktom_Homepage](https://github.com/pasindupiumal03/Fraktom_Homepage)
 
 ---
 
-## Hire an Expert Frontend & App Developer
+## Technical Stack & Architecture
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+### 1. Mathematical Bonding Curve Engine
+Implements automated market maker (AMM) bonding curve formulas ($y = k \cdot x^2$) to calculate real-time token pricing based on simulated supply and demand.
+
+### 2. High-Frequency State Synchronization
+Built using Next.js, React 19, and Tailwind CSS with optimistic UI updates to simulate instant execution and live price updates without server latency.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Fraktom architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

@@ -1,0 +1,52 @@
+---
+title: "Gmail Signature Manager — Multi-Profile HTML Email Signature Chrome Extension"
+publishedAt: "2025-04-12"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Chrome extension managing multiple professional HTML signatures across single and multi-account Gmail setups with domain-based auto-switching rules."
+image: "/gmail-signature-manager.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Gmail Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">HTML Signature Manager</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Chrome Sync Storage</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
+</div>
+
+## Executive Summary
+
+**Gmail Signature Manager** overcomes Gmail's native signature limitations by providing a multi-account, domain-matched HTML signature switcher. Users can create, store, and automatically swap rich HTML signatures based on recipient email domain, sender alias, or business persona.
+
+- **Capabilities**: Unlimited HTML signature templates, recipient domain matching rules, logo hosting, and live signature preview.
+- **Integration**: Injects directly into Gmail's iframe message composer without disturbing draft text or recipient lists.
+
+---
+
+## Technical Solutions & Execution
+
+### 1. Dynamic Compose Body Injection
+Monitors Gmail DOM compose windows using dynamic mutation listeners. When a user changes the "From" address or types a recipient in the "To" field, the extension evaluates matching rule predicates and injects the corresponding HTML signature template into the message container.
+
+### 2. Rich HTML & CSS Sanitization
+Ensures custom signatures maintain cross-client email rendering standards (Outlook, Gmail mobile, Apple Mail) by stripping non-standard CSS properties and embedding clean inline style attributes.
+
+### 3. Chrome Sync Storage Synchronization
+Persists signature templates and rule matrices using `chrome.storage.sync`, enabling seamless setup across all user browser instances.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Gmail Signature Manager architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

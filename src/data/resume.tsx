@@ -1,17 +1,48 @@
 import { Icons } from "@/components/icons";
-import { HomeIcon, NotebookIcon, BriefcaseIcon, MailIcon } from "lucide-react";
+import {
+  HomeIcon,
+  NotebookIcon,
+  BriefcaseIcon,
+  MailIcon,
+  BookOpenIcon,
+  Bot,
+  Workflow,
+  Sparkles,
+  Search,
+  Terminal,
+  ShieldCheck,
+  Cpu,
+} from "lucide-react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
 import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
 import {
+  SiTypescript,
   SiJavascript,
   SiPython,
+  SiHtml5,
+  SiCss3,
+  SiReact,
+  SiNextdotjs,
   SiTailwindcss,
-  SiMongodb,
+  SiNodedotjs,
   SiExpress,
+  SiGooglechrome,
+  SiMongodb,
+  SiFirebase,
+  SiSupabase,
+  SiGooglesheets,
+  SiGoogleappsscript,
+  SiPuppeteer,
   SiGit,
+  SiGithub,
+  SiDocker,
+  SiAmazonwebservices,
+  SiVercel,
+  SiGooglegemini,
+  SiSolana,
 } from "react-icons/si";
 
 export const DATA = {
@@ -28,16 +59,36 @@ export const DATA = {
     "Since 2024, [I have been pursuing a BSc (Hons) in Software Engineering at the University of Westminster](/#education). In 2025, [I joined Bytesquadlabs as a Software Engineer](/#work). Where I work on full-stack web development and chrome extension projects. I enjoy building scalable applications using modern web technologies and creating browser extensions that enhance productivity and user experience. I’m driven by hands-on development and a strong interest in building practical, impactful software.",
   avatarUrl: "/me.png",
   skills: [
-    { name: "React", icon: ReactLight },
-    { name: "Next.js", icon: NextjsIconDark },
+    { name: "TypeScript", icon: Typescript },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-    { name: "Typescript", icon: Typescript },
-    { name: "Node.js", icon: Nodejs },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-    { name: "Express.js", icon: SiExpress, color: "#000000" },
+    { name: "Python", icon: Python },
+    { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+    { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+    { name: "React.js", icon: ReactLight },
+    { name: "Next.js", icon: NextjsIconDark },
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-    { name: "Python", icon: SiPython, color: "#3776AB" },
-    { name: "GIT", icon: SiGit, color: "#F05032" },
+    { name: "Chrome Extensions", icon: SiGooglechrome, color: "#4285F4" },
+    { name: "Manifest V3", icon: ShieldCheck, color: "#3B82F6" },
+    { name: "Content Scripts", icon: Workflow, color: "#6366F1" },
+    { name: "Service Workers", icon: Terminal, color: "#F59E0B" },
+    { name: "Chrome APIs", icon: SiGooglechrome, color: "#4285F4" },
+    { name: "DOM Manipulation", icon: Cpu, color: "#EC4899" },
+    { name: "Browser Automation", icon: Bot, color: "#10B981" },
+    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+    { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+    { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+    { name: "Google Apps Script", icon: SiGoogleappsscript, color: "#4285F4" },
+    { name: "Google Sheets API", icon: SiGooglesheets, color: "#34A853" },
+    { name: "Web Scraping", icon: Search, color: "#00B4D8" },
+    { name: "Data Extraction", icon: SiPuppeteer, color: "#40B5A4" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "GitHub", icon: SiGithub, color: "#181717" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "AWS", icon: SiAmazonwebservices, color: "#FF9900" },
+    { name: "Vercel", icon: SiVercel },
+    { name: "AI RAG", icon: Sparkles, color: "#8B5CF6" },
+    { name: "Google Gemini", icon: SiGooglegemini, color: "#8E75FF" },
+    { name: "WEB3", icon: SiSolana, color: "#14F195" },
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -85,8 +136,7 @@ export const DATA = {
         name: "Gmail",
         url: "/contact",
         icon: Icons.email,
-
-        navbar: true,
+        navbar: false,
       },
       // Youtube: {
       //   name: "Youtube",
@@ -353,6 +403,30 @@ export const DATA = {
       ],
       image: "",
       video: "/fullgrab.mp4",
+    },
+    {
+      title: "Censor AI — Gmail AI Email Writing & Tone Rewriter",
+      href: "/projects/censor-ai",
+      dates: "Aug 2025 - Present",
+      active: true,
+      description:
+        "Published Chrome Web Store extension for Gmail. Injects context-aware OpenAI text completion to instantly rewrite, polish, and tone-adjust draft emails directly inside the Gmail compose window with non-destructive DOM insertion.",
+      technologies: [
+        "Chrome Web Store Live",
+        "OpenAI GPT-4o API",
+        "Gmail DOM Injection",
+        "Manifest V3",
+        "ContentEditable",
+      ],
+      links: [
+        {
+          type: "Store",
+          href: "https://chromewebstore.google.com/detail/censor/elgfhammpjfmmgiflpjbohhbimlfdimm",
+          icon: <Icons.store className="size-3" />,
+        },
+      ],
+      image: "/censor-ai.png",
+      video: "",
     },
   ],
   hackathons: [

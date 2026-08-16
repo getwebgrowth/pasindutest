@@ -1,30 +1,79 @@
 ---
-title: "Positional AI — Content Verification & AI Plagiarism Detector Extension"
+title: "Positional AI — Real-Time Content Authenticity & AI Plagiarism Detection Chrome Extension"
 publishedAt: "2025-07-20"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Intelligent Chrome extension that detects whether webpage content is AI-generated or human-written with real-time probability scores and detailed breakdown."
+summary: "Intelligent Chrome extension evaluating webpage text to calculate Human vs AI content authenticity percentages (e.g. 20% Human / 80% AI) with instant DOM popup visualization."
 image: "/positional.png"
-content: ""
 ---
 
-# Positional AI — Content Verification & AI Plagiarism Detector Extension
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Extension</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">AI Text Probability Model</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Real-Time DOM Inspection</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">AI Detection Tool</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Perplexity & Burstiness Engine</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">DOM Text Analyzer</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
-**Positional AI** analyzes active webpage text to calculate AI probability percentages in real time, helping educators, editors, and publishers verify article originality.
+**Positional AI** is a content verification browser extension built for editors, educators, publishers, and recruiters. The extension analyzes selected text or active article bodies, evaluating perplexity and burstiness metrics to calculate a precise Human vs. Artificial Intelligence probability score (e.g. "20% Human, 80% Artificial Intelligence").
+
+- **Target Audience**: Content managers, academic checkers, SEO teams, and hiring managers.
+- **Capabilities**: 1-click DOM text selection analysis, visual progress meter popup, and tone breakdown.
 
 ---
 
-## Hire an Expert Extension Developer
+## User Interface & Analysis Meter
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+The extension renders a clean popup dialog over ChatGPT or active web pages, displaying probability progress bars and AI classification verdicts:
+
+![Positional AI Real-Time Content Authenticity Popup](/positional.png)
+
+### Key Features:
+- **Real-Time Probability Meter**: Visual breakdown of human vs AI text probability percentages.
+- **Selection Highlight Hook**: Analyzes highlighted text or active article copy directly inside the browser DOM.
+
+---
+
+## Engineering Architecture & System Design
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Browser Active Tab (MV3)                 │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ DOM Selection Text Parser   │   │ Probability Popup   │  │
+│  │ (Perplexity & Burstiness)   │──►│ (Human vs AI Meter) │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Cleaned Text Tokens         │ Verdict & % │
+│                 ▼                             │ Breakdown   │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Machine Learning Classification Model Engine          │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                   OpenAI Token Predictability API
+```
+
+### 1. Selection & Article Body Parser
+Extracts article text dynamically using `window.getSelection()` or article container heuristic parsers, filtering out navigation headers and sidebar boilerplate.
+
+### 2. Machine Learning Probability Model
+Pipes cleaned text payloads to classification models that measure sentence length variance and token predictability to render instant percentage breakdown cards.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Positional AI architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

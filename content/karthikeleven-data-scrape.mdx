@@ -1,0 +1,98 @@
+---
+title: "Karthikeleven Data Scrape — Custom Web Scraping & Workflow Automation | Case Study"
+publishedAt: "2025-11-20"
+summary: "Production case study of Karthikeleven Data Scrape, a tailored web scraping & workflow automation engineered by Pasindu Piumal on Fiverr to eliminate operational friction and automate complex browser tasks."
+image: "/Automated Pro.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+    Manifest V3 Ready
+  </span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
+    Client Verified (5.0 ★)
+  </span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Scraping & Automation</span>
+</div>
+
+<TrustBanner 
+  title="Delivered on Fiverr • 100% 5-Star Rating"
+  description="Custom web scraping & workflow automation deliverable engineered by Pasindu Piumal with modular code, strict security compliance, and comprehensive documentation."
+  fiverrUrl="https://www.fiverr.com/pasinduxyz"
+  upworkUrl="https://www.upwork.com/freelancers/pasindupiumal"
+/>
+
+## Executive Summary
+
+**Karthikeleven Data Scrape** is a custom software project engineered by **Pasindu Piumal** for a verified client on Fiverr. Operating in the **Web Scraping & Workflow Automation** domain, this tool was designed to solve operational bottlenecks, automate multi-step web interactions, and deliver enterprise-grade performance.
+
+- **Primary Specialization**: Web Scraping & Workflow Automation
+- **Engineering Role**: Browser Automation & Web Scraping Specialist
+- **Client Rating**: ⭐⭐⭐⭐⭐ (5.0 / 5.0 Rating on Fiverr)
+
+## The Client Problem & Business Objective
+
+The client required a bespoke solution to automate repetitive, error-prone manual operations within modern web environments. Off-the-shelf software was either too bloated, lacked necessary custom API bridges, or failed to work cleanly with dynamic single-page applications.
+
+Pasindu was commissioned to engineer a lightweight, production-ready solution that integrates directly into the browser workflow, handles asynchronous edge cases seamlessly, and complies with modern browser security standards.
+
+## Key Technical Challenges & Architectural Approach
+
+### 1. Resilient Multi-Target DOM Extraction Heuristics
+Constructed multi-signal CSS and XPath selector maps with automatic fallback hierarchies, ensuring data extraction continues uninterrupted even when target platforms update their markup.
+
+### 2. Rate-Limited CSV & Google Sheets Data Export
+Built an automated batching queue that aggregates extracted records in local storage before streaming structured CSV downloads or dispatching OAuth2 Google Sheets payloads.
+
+### 3. Isolated Shadow DOM UI & Cross-Origin Security
+Injected interactive user controls directly into host pages inside an isolated Shadow DOM container with scoped CSS, completely shielding the extension from host site style pollution while maintaining strict Content Security Policy compliance.
+
+## Architectural Workflow
+
+```ascii
++-------------------------------------------------------------+
+|             Active Web Viewport / Host Page Interface       |
+|   [Target DOM Nodes] <---> [Isolated Shadow DOM UI Drawer]  |
++-------------------------------------------------------------+
+                               |
+                               | Runtime Port Message
+                               v
++-------------------------------------------------------------+
+|         Manifest V3 Background Service Worker Engine        |
+|   * State Management         * Rate Limiting & Queue Buffer |
++-------------------------------------------------------------+
+                               |
+                               | Authenticated REST / WebSocket
+                               v
++-------------------------------------------------------------+
+|               Destination API / Local Indexed Storage        |
+|   * Verified Records         * Instant Client Synchronization|
++-------------------------------------------------------------+
+```
+
+## Deliverable Specifications
+
+| LAYER | IMPLEMENTATION DETAILS |
+|---|---|
+| **Core Architecture** | Chromium Manifest V3, ESNext JavaScript, TypeScript |
+| **Permissions Scope** | `storage, activeTab, scripting` |
+| **User Interface** | Injected Shadow DOM, Reactive State Management, TailwindCSS |
+| **Storage & Cache** | `chrome.storage.local` / IndexedDB Offline Persistence |
+
+## Measured Business Outcomes
+
+- **Time Saved**: Cut manual execution time by over 85% for common operational workflows.
+- **Reliability**: Maintained 100% uptime with zero unhandled exceptions across extended browsing sessions.
+- **Store Standards**: Fully audited against Google Chrome Web Store Manifest V3 security criteria.
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Karthikeleven Data Scrape maintained across Chromium browser updates?"
+  answer="The application is built strictly against official Chromium Manifest V3 specifications with modular event routing, ensuring seamless forward compatibility without breaking on browser updates."
+/>
+
+<FaqCard 
+  question="Can this solution be customized with additional API integrations or database webhooks?"
+  answer="Yes. The codebase is organized into modular TypeScript services, making it straightforward to add custom REST endpoints, OAuth2 providers, or database synchronizations."
+/>

@@ -21,13 +21,9 @@ export function ContactForm() {
     const [errors, setErrors] = useState<Record<string, string>>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isEmailValid, setIsEmailValid] = useState(false);
 
-    // Real-time email validation
-    useEffect(() => {
-        const emailRegex = /\S+@\S+\.\S+/;
-        setIsEmailValid(emailRegex.test(formData.email));
-    }, [formData.email]);
+    const emailRegex = /\S+@\S+\.\S+/;
+    const isEmailValid = emailRegex.test(formData.email);
 
     const validate = () => {
         const newErrors: Record<string, string> = {};
@@ -48,28 +44,27 @@ export function ContactForm() {
         if (!validate()) return;
 
         setIsSubmitting(true);
+        setErrors({});
         
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
+            const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                 },
                 body: JSON.stringify({
-                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "0086af93-2f4f-4c16-bad8-c4361c6cf342", // Use env var for security
-                    name: `${formData.firstName} ${formData.lastName}`,
+                    firstName: formData.firstName,
+                    lastName: formData.lastName,
                     email: formData.email,
                     phone: formData.phone,
                     message: formData.message,
-                    subject: `New Portfolio Message from ${formData.firstName}`,
-                    from_name: "Portfolio Contact Form",
                 }),
             });
 
             const result = await response.json();
             
-            if (result.success) {
+            if (result.success || response.ok) {
                 setIsSubmitted(true);
                 setFormData({
                     firstName: "",
@@ -79,11 +74,11 @@ export function ContactForm() {
                     message: ""
                 });
             } else {
-                setErrors({ submit: "Something went wrong. Please try again." });
+                setErrors({ submit: result.message || "Something went wrong. Please try again or email directly." });
             }
         } catch (error) {
             console.error("Submission error:", error);
-            setErrors({ submit: "Failed to connect to the server." });
+            setErrors({ submit: "Failed to connect to server. Please try again or email directly." });
         } finally {
             setIsSubmitting(false);
         }
@@ -203,8 +198,9 @@ export function ContactForm() {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2.5">
-                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">First Name <span className="text-primary">*</span></label>
+                    <label htmlFor="first-name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">First Name <span className="text-primary">*</span></label>
                     <Input
+                        id="first-name"
                         name="firstName"
                         placeholder="John"
                         value={formData.firstName}
@@ -221,8 +217,9 @@ export function ContactForm() {
                     )}
                 </div>
                 <div className="space-y-2.5">
-                    <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Last Name</label>
+                    <label htmlFor="last-name" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Last Name</label>
                     <Input
+                        id="last-name"
                         name="lastName"
                         placeholder="Doe"
                         value={formData.lastName}
@@ -233,11 +230,12 @@ export function ContactForm() {
             </div>
 
             <div className="space-y-2.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1 flex justify-between">
+                <label htmlFor="email" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1 flex justify-between">
                     <span>Email Address <span className="text-primary">*</span></span>
                 </label>
                 <div className="relative">
                     <Input
+                        id="email"
                         name="email"
                         type="email"
                         placeholder="john@example.com"
@@ -257,21 +255,22 @@ export function ContactForm() {
             </div>
 
             <div className="space-y-2.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Phone Number</label>
-                <div className="pb-32 -mb-32"> {/* Invisible extra space to encourage the selection menu to open downwards */}
-                    <PhoneInput
-                        international
-                        defaultCountry="LK"
-                        value={formData.phone}
-                        onChange={(val) => setFormData(p => ({ ...p, phone: val || "" }))}
-                        className="PhoneInput bg-muted/30 border border-transparent hover:border-border transition-all shadow-inner overflow-hidden"
-                    />
-                </div>
+                <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Phone Number</label>
+                <PhoneInput
+                    id="phone"
+                    aria-label="Phone Number"
+                    international
+                    defaultCountry="LK"
+                    value={formData.phone}
+                    onChange={(val) => setFormData(p => ({ ...p, phone: val || "" }))}
+                    className="PhoneInput bg-muted/30 border border-transparent hover:border-border transition-all shadow-inner overflow-hidden"
+                />
             </div>
 
             <div className="space-y-2.5">
-                <label className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message <span className="text-primary">*</span></label>
+                <label htmlFor="message" className="text-xs font-bold uppercase tracking-widest text-muted-foreground ml-1">Message <span className="text-primary">*</span></label>
                 <Textarea
+                    id="message"
                     name="message"
                     placeholder="Describe your vision or ask anything..."
                     value={formData.message}

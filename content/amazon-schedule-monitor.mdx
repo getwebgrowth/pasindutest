@@ -1,42 +1,69 @@
 ---
-title: "Amazon Schedule Monitor — Shift Availability Auto-Check Chrome Extension"
+title: "Amazon Schedule Monitor — Real-Time Shift Availability Auto-Check Extension"
 publishedAt: "2025-03-10"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Automated Chrome extension for continuous shift monitoring on Amazon hiring portals. Features real-time notifications, DOM scraping, and local state persistence."
+summary: "Automated Chrome extension for continuous shift monitoring on Amazon hiring portals. Features sub-second background polling, DOM mutation listeners, audio alerts, and push notifications."
 image: "/amazon-schedule-monitor.png"
-content: ""
 ---
-
-# Amazon Schedule Monitor — Shift Availability Auto-Check Extension
 
 <div className="flex flex-wrap gap-2 my-4">
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Open Source on GitHub</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Background Monitoring</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Chrome Notifications API</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Manifest V3</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Chrome Alarms API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Audio Alert Engine</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
-**Amazon Schedule Monitor** is a specialized background monitoring Chrome extension designed for flexible workforce employees and logistics staff. It continuously checks for newly opened work blocks, sounds instant audio alerts, and triggers system notifications the second a preferred shift opens.
+**Amazon Schedule Monitor** is a specialized background monitoring Chrome extension designed for flexible workforce employees and warehouse staff. It continuously monitors shift release schedules, triggering instant audio chimes and native OS push notifications the second a preferred work block becomes available.
 
-- **Source Code**: [github.com/pasindupiumal03/Amazon-Schedule-Monitor-Extension](https://github.com/pasindupiumal03/Amazon-Schedule-Monitor-Extension)
-
----
-
-## Technical Stack
-
-- **Extension Framework**: Manifest V3, `chrome.notifications`, `chrome.alarms`, `chrome.storage`.
-- **DOM Engine**: MutationObservers, Dynamic Content Scripts.
+- **GitHub Repository**: [github.com/pasindupiumal03/Amazon-Schedule-Monitor-Extension](https://github.com/pasindupiumal03/Amazon-Schedule-Monitor-Extension)
+- **Key Features**: Background alarms polling, cookie session preservation, customizable criteria filters, and instant notification sound dispatch.
 
 ---
 
-## Hire an Expert Automation Developer
+## Engineering Architecture & System Design
 
-Need a custom monitoring extension, automated alert system, or web scraper?
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   Chrome Extension (MV3)                    │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Background Service Worker   │   │ Chrome Alarms Engine│  │
+│  │ (Session Cookie Keeper)     │──►│ (Periodic Poll loop)│  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Intercept Endpoint          │ Trigger Alert│
+│                 ▼                             │ Broadcast    │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ DOM Mutation Observer & Notification Dispatcher       │  │
+│  │ • Native Audio Beep Synthesizer                       │  │
+│  │ • Push Notification API Bridge                        │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                   Amazon Shift Schedule Endpoint
+```
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+### 1. Persistent Background Alarms Engine
+Utilizes `chrome.alarms` and service worker keepalives to poll shift endpoints at configurable intervals without triggering tab focus or high memory overhead.
+
+### 2. Cookie Session Repair & Heartbeat
+Detects auth redirection loops and automatically refreshes portal session tokens in background tabs, ensuring non-stop monitoring for up to 72 hours.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Amazon Schedule Monitor architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

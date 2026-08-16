@@ -8,7 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { DATA } from "@/data/resume";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 function LogoImage({ src, alt }: { src: string; alt: string }) {
@@ -16,15 +16,17 @@ function LogoImage({ src, alt }: { src: string; alt: string }) {
 
   if (!src || imageError) {
     return (
-      <div className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border bg-muted flex-none" />
+      <div className="size-8 md:size-10 p-1 border rounded-full shadow-xs ring-2 ring-border bg-muted flex-none" />
     );
   }
 
   return (
     <img
       src={src}
-      alt={alt}
-      className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
+      alt={`${alt} logo`}
+      width={40}
+      height={40}
+      className="size-8 md:size-10 p-1 border rounded-full shadow-xs ring-2 ring-border overflow-hidden object-contain flex-none"
       onError={() => setImageError(true)}
     />
   );
@@ -53,34 +55,10 @@ export default function WorkSection() {
             <AccordionTrigger className="hover:no-underline p-0 cursor-pointer transition-colors rounded-none group [&>svg]:hidden">
               <div className="flex items-center gap-x-3 justify-between w-full text-left">
                 <div className="flex items-center gap-x-3 flex-1 min-w-0">
-                  {hasHref ? (
-                    <a
-                      href={work.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex-none"
-                    >
-                      <LogoImage src={work.logoUrl} alt={work.company} />
-                    </a>
-                  ) : (
-                    <LogoImage src={work.logoUrl} alt={work.company} />
-                  )}
+                  <LogoImage src={work.logoUrl} alt={work.company} />
                   <div className="flex-1 min-w-0 gap-0.5 flex flex-col">
                     <div className="font-semibold leading-none flex items-center gap-2">
-                      {hasHref ? (
-                        <a
-                          href={work.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="hover:underline cursor-pointer"
-                        >
-                          {work.company}
-                        </a>
-                      ) : (
-                        work.company
-                      )}
+                      <span>{work.company}</span>
                       <span className="relative inline-flex items-center w-3.5 h-3.5">
                         <ChevronRight
                           className={cn(
@@ -111,8 +89,21 @@ export default function WorkSection() {
                 </div>
               </div>
             </AccordionTrigger>
-            <AccordionContent className="p-0 ml-13 text-xs sm:text-sm text-muted-foreground">
-              {work.description}
+            <AccordionContent className="p-0 ml-11 sm:ml-13 text-xs sm:text-sm text-muted-foreground space-y-2 pt-1">
+              <div>{work.description}</div>
+              {hasHref && (
+                <div>
+                  <a
+                    href={work.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                  >
+                    <span>View {work.company} Profile</span>
+                    <ExternalLink className="size-3" />
+                  </a>
+                </div>
+              )}
             </AccordionContent>
           </AccordionItem>
         );
@@ -120,4 +111,3 @@ export default function WorkSection() {
     </Accordion>
   );
 }
-

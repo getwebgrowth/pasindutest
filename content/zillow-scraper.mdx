@@ -1,0 +1,83 @@
+---
+title: "Zillow Real Estate Scraper — Automated Data Extraction & Google Sheets Sync Pipeline"
+publishedAt: "2025-05-18"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "High-volume real estate property scraper piping filter-matching Zillow listings straight into Google Sheets with custom criteria filtering and anti-bot mitigation."
+image: "/zillow-scraper.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Real Estate Scraper</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Google Sheets API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Anti-Bot Mitigation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Node.js / Puppeteer</span>
+</div>
+
+## Executive Summary
+
+**Zillow Real Estate Scraper** is an automated property intelligence pipeline built for real estate agents, wholesalers, and market investors. The tool continuously extracts property listings matching target parameters (price, price-per-sqft, beds/baths, lot size, year built, listing type) and writes structured listing records into Google Sheets in real-time.
+
+- **Extraction Targets**: Listing address, price, zestimate, price per sqft, agent contact info, listing age, and price reduction history.
+- **Delivery Format**: Automated Google Sheets rows & Discord webhook notifications.
+- **Anti-Bot Resilience**: Bypasses anti-scraping protections via header randomization and headless browser session rotation.
+
+---
+
+## User Interface & Scraper Filter Options
+
+The application provides a comprehensive filter configuration dashboard, allowing investors to define strict acquisition buy-box criteria:
+
+![Zillow Scraper Filtering & Controls Interface](/zillow-scraper.png)
+
+### Key Parameter Controls:
+- **Location Information**: City, State, Country, and Zip Code filtering.
+- **Property Criteria**: Beds/Baths range, Lot Size, Square Footage bounds, Year Built, and Sale By (Owner / Agent).
+
+---
+
+## Engineering Architecture & Tech Stack
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Zillow Scraping Worker                   │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Headless Browser Worker     │   │ Target Filter Engine│  │
+│  │ (Header & Cookie Rotation)  │──►│ (Price, Beds, Lot)  │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Extracted Payload           │ Valid Match  │
+│                 ▼                             │ Insertion    │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Google Sheets API v4 OAuth & Webhook Alert Worker     │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                      Live Google Sheets Database
+```
+
+### 1. Robust Anti-Detection Layer
+Utilizes Puppeteer-Stealth with dynamic user-agent pools, canvas fingerprint spoofing, and randomized request delays to bypass cloud security gateways without IP bans.
+
+### 2. Google Sheets API v4 Integration
+Constructs batch update requests to append formatted property rows directly to target client spreadsheets, enabling real-time collaboration across real estate acquisition teams.
+
+### 3. Automated Listing Alerts
+Triggers instant Discord and SMS alerts when high-yield properties matching buy box parameters hit the market.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Zillow Real Estate Scraper architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

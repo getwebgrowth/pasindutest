@@ -1,31 +1,81 @@
 ---
-title: "WebMind — AI Vector Memory & Natural Language Recall Chrome Extension"
+title: "WebMind — AI Browser Intelligence, Vector Memory & Natural Language Recall Extension"
 publishedAt: "2025-05-15"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Private browser extension that transforms browsing history into an encrypted vector database. Ask natural language questions to recall past research with instant semantic search."
+summary: "Private browser extension that indexes browsing history into a vector embeddings database. Ask natural language questions to recall past research with instant semantic search."
 image: "/WebMind.png"
-content: ""
 ---
 
-# WebMind — AI Vector Memory & Natural Language Recall Extension
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Extension</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">OpenAI Vector Embeddings</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Client-Side Encryption</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">IndexedDB Local Vector Store</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">AI Extension</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">OpenAI Vector Embeddings</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Client Encryption</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
-**WebMind** allows knowledge workers, researchers, and traders to effortlessly recall complex articles, documentation, or tweets they read days ago without bookmarking. By generating local vector embeddings of viewed content, users can query their browser memory using plain English (e.g., *"What was that article about Solana RPC optimization?"*) and get pinpoint answers.
+**WebMind** (also known as Tandem) is a personal AI memory assistant that index-scans visited web content and stores vector embeddings locally. Instead of manually searching through bookmarks or browser history, users can ask natural language questions (e.g. *"What was that article I read about Solana NFT RPC nodes?"*) and get instant semantic search results with exact text highlights.
+
+- **Privacy Guarantee**: All page content is encrypted locally using AES-GCM before storage in `IndexedDB`.
+- **Target Users**: Researchers, developers, traders, and students requiring instant recall of complex technical materials.
 
 ---
 
-## Hire an Expert AI Extension Developer
+## User Interface Showcase
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+The extension operates via Chrome's native SidePanel API, providing seamless natural language history query capabilities alongside active web browsing:
+
+![Tandem Extension AI Memory Sidepanel Interface](/WebMind.png)
+
+### Core UI Capabilities:
+- **Natural Language Inquiry**: Query personal browsing memory with plain English prompts (*"Ask AI anything about your browsing history!"*).
+- **In-Browser Sidepanel Integration**: Docked sidepanel interface operating alongside any active web tab with sub-second query latency.
+
+![Tandem Extension Live Browser Integration](/tandem-browser.png)
+
+---
+
+## Technical Stack & Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Chrome Browser (MV3)                     │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Page Content Extractor      │   │ SidePanel Chat HUD  │  │
+│  │ (Background Service Worker) │──►│ (Natural Language)  │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Vector Chunk Embeddings     │ Grounded    │
+│                 ▼                             │ Query Result│
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ IndexedDB Encrypted Local Vector Database             │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                     OpenAI Embeddings API
+```
+
+### 1. Vector Embeddings Indexer
+Extracts page body text in background worker threads, generating text chunk embeddings via OpenAI's `text-embedding-3-small` API. Stores vector embeddings in IndexedDB for instant cosine similarity queries.
+
+### 2. Sidepanel Natural Language Query Interface
+Built using React, Tailwind CSS, and Chrome's native SidePanel API, providing a clean chat interface that answers questions grounded directly in the user's personal web history context.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is WebMind architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

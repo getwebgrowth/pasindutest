@@ -152,7 +152,7 @@ export default async function ProjectPage({
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-background/80 hover:bg-muted font-medium text-foreground transition-colors group shadow-2xs"
           >
             <ChevronLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
-            <span>All 23 Case Studies</span>
+            <span>All Projects & Case Studies</span>
           </Link>
 
           <div className="flex items-center gap-3">
@@ -175,7 +175,7 @@ export default async function ProjectPage({
               <Sparkles className="size-3" />
               Production Case Study
             </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">
               <CheckCircle2 className="size-3" />
               Shipped & Verified
             </span>
@@ -258,7 +258,7 @@ export default async function ProjectPage({
             </div>
             <div className="p-2 sm:p-4 flex items-center justify-center bg-background/50">
               <img
-                src={post.image.startsWith("/") ? post.image : `/${post.image}`}
+                src={post.image.startsWith("http") ? post.image : post.image.startsWith("/") ? post.image : `/${post.image}`}
                 alt={post.title}
                 className="w-full h-auto max-h-[480px] object-contain rounded-xl"
               />
@@ -278,17 +278,17 @@ export default async function ProjectPage({
               <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary text-primary-foreground uppercase tracking-wider">
                 Work With Pasindu Piumal
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+              <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
                 Need a Custom Extension, AI Tool, or Bot Built?
-              </h3>
+              </h2>
             </div>
             <div className="text-left sm:text-right shrink-0">
               <div className="text-xl font-extrabold text-primary">$20 / hr</div>
-              <div className="text-xs text-muted-foreground font-medium">Tracked or Milestone Escrow</div>
+              <div className="text-xs text-foreground/80 dark:text-muted-foreground font-medium">Tracked or Milestone Escrow</div>
             </div>
           </div>
 
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <p className="text-xs sm:text-sm text-foreground/85 dark:text-muted-foreground leading-relaxed">
             I engineer production-ready <strong>Manifest V3 Chrome extensions</strong>, AI floating copilots (OpenAI & Gemini Pro),
             high-frequency transaction/sniper bots, multi-ATS form automation tools, and full-stack SaaS platforms. 
             175+ real-world projects shipped with 100% Upwork Job Success score.
@@ -299,23 +299,32 @@ export default async function ProjectPage({
               href="https://www.upwork.com/freelancers/pasindupiumal"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-5 py-2.5 text-xs font-bold shadow-md hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-primary-foreground px-4 py-2.5 text-xs font-bold shadow-md hover:opacity-90 transition-opacity"
             >
               <Icons.upwork className="size-4 fill-current" />
               <span>Hire Me on Upwork ($20/hr)</span>
               <ChevronRight className="size-3.5" />
             </Link>
             <Link
+              href="https://www.fiverr.com/pasinduxyz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-600/30 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 px-4 py-2.5 text-xs font-bold shadow-xs hover:bg-emerald-500/20 transition-colors"
+            >
+              <Icons.fiverr className="size-4 fill-current" />
+              <span>Order on Fiverr (5.0 ★)</span>
+            </Link>
+            <Link
               href="/chrome-extension-developer-for-hire"
               className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-primary/40 bg-background hover:bg-muted px-4 py-2.5 text-xs font-semibold text-foreground transition-colors"
             >
-              <span>Explore Specializations & Rates</span>
+              <span>Services & Rates</span>
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center rounded-xl border bg-muted/60 hover:bg-muted px-4 py-2.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center justify-center rounded-xl border bg-muted/60 hover:bg-muted px-4 py-2.5 text-xs font-semibold text-foreground/90 hover:text-foreground transition-colors"
             >
-              <span>Direct Project Inquiry</span>
+              <span>Direct Inquiry</span>
             </Link>
           </div>
         </section>

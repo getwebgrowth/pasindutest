@@ -1,35 +1,69 @@
 ---
-title: "Alphyre — Crypto Intelligence Platform & X402 Micro-Payments Dashboard"
+title: "Alphyre — Crypto Intelligence Platform & X402 Solana Micro-Payments Dashboard"
 publishedAt: "2025-12-01"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Advanced crypto trading intelligence platform with real-time multi-chain analytics, AI insights, and Solana-based USDC micro-payments via the X402 protocol."
+summary: "Advanced crypto trading intelligence platform featuring real-time multi-chain token analytics, AI market insights, Phantom wallet integration, and Solana-based USDC micro-payments via the X402 HTTP protocol."
 image: "/Alphyre.png"
 video: "/Alphyre-2.mp4"
-content: ""
 ---
 
-# Alphyre — Crypto Intelligence & X402 Micro-Payments Dashboard
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Live Platform</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">X402 Protocol • USDC Payments</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Multi-Chain Analytics</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Next.js • TypeScript</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Live Web3 SaaS</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">X402 USDC Payments</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Multi-Chain Analytics</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Next.js • TypeScript</span>
 </div>
 
 ## Executive Summary
 
-**Alphyre** is an institutional-grade crypto intelligence dashboard delivering token velocity signals, whale transaction tracking, and automated AI analysis. It features friction-free pay-per-query access using the **X402 HTTP micropayment standard**, allowing users to pay fractions of a cent in USDC directly from their Solana wallet.
+**Alphyre** is an institutional-grade crypto analytics dashboard delivering token liquidity metrics, whale transaction alerts, and AI-driven market sentiment scores. Built on Next.js and TypeScript, the platform incorporates the **X402 HTTP Micropayment Standard**, enabling pay-per-query access paid in USDC on the Solana blockchain with sub-second finality.
 
-- **Live URL**: [aphyre.vercel.app](https://aphyre.vercel.app/)
-- **Source Code**: [github.com/pasindupiumal03/Alphyre_Dashboard](https://github.com/pasindupiumal03/Alphyre_Dashboard)
+- **Live Platform**: [aphyre.vercel.app](https://aphyre.vercel.app/)
+- **GitHub Repository**: [github.com/pasindupiumal03/Alphyre_Dashboard](https://github.com/pasindupiumal03/Alphyre_Dashboard)
+- **Key Capability**: Zero-subscription micro-transactions for premium crypto market data endpoints.
 
 ---
 
-## Hire an Expert Full-Stack Developer
+## Technical Architecture & Engineering Solutions
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+```
+┌─────────────────────────────────────────────────────────────┐
+│                       Next.js Frontend                      │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ Wallet Connection Layer     │   │ Dynamic Charting UI │  │
+│  │ (Phantom / Solana Web3.js)  │──►│ (Recharts / Canvas) │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Signed X402 Payment         │ Premium Data │
+│                 ▼                             │ Response     │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Next.js API Routes & X402 Verification Guard          │  │
+│  └──────────────────────────────┬────────────────────────┘  │
+└─────────────────────────────────┼───────────────────────────┘
+                                  ▼
+                      Solana Mainnet RPC Node
+```
+
+### 1. X402 Protocol HTTP Payment Middleware
+When users request premium AI signals, the API returns an HTTP `402 Payment Required` header containing invoice parameters. The user's Phantom wallet signs the micro-transaction ($0.01 USDC), and the server verifies signature on-chain before returning the data payload.
+
+### 2. High-Performance Token Telemetry
+Integrates with DEX APIs and Solana RPC nodes to render real-time volume charts, holder distribution, and smart money movement indicators.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Alphyre architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

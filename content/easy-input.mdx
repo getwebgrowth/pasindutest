@@ -1,0 +1,52 @@
+---
+title: "Easy Input — Smart Phrase Saver, Translation & Flashcard Chrome Extension"
+publishedAt: "2025-06-10"
+updatedAt: "2026-08-15"
+author: "Pasindu Piumal"
+summary: "Feature-rich browser extension allowing users to highlight text on any site, translate snippets, hear native pronunciations, convert vocabulary into flashcards, and sync with a central dashboard."
+image: "/easy-input.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Vocabulary Tool</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Web Speech API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">IndexedDB Storage</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
+</div>
+
+## Executive Summary
+
+**Easy Input** is a comprehensive learning and productivity Chrome extension designed for language learners, researchers, and students. By selecting any text across the web, users open an floating toolbar to save phrases, look up contextual translations, hear native audio pronunciations, generate spaced-repetition flashcards, and sync items to their dashboard.
+
+- **Capabilities**: Text selection capture, multi-language translation, Web Speech audio, Anki CSV export, and cloud synchronization.
+- **UI Architecture**: Glassmorphic floating popover rendered inside isolated Shadow DOM.
+
+---
+
+## Technical Stack & Architecture
+
+### 1. Selection Toolbar Component
+Listens to `mouseup` and `selectionchange` events across arbitrary web pages. Calculates precise bounding rectangles (`getBoundingClientRect`) to float the action menu above selected text without flickering.
+
+### 2. Native Web Speech & Translation Engine
+Connects directly to Web Speech API synthesis for instant audio playback without external latency, backed by cloud translation APIs for multi-language context matching.
+
+### 3. Offline-First IndexedDB Sync
+Uses local IndexedDB storage to record saved phrases offline, automatically syncing state with the user's web account when connection is restored.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Easy Input architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

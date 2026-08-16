@@ -1,5 +1,7 @@
 import { CodeBlock } from "@/components/mdx/code-block";
 import { MediaContainer } from "@/components/mdx/media-container";
+import { TrustBanner } from "@/components/mdx/trust-banner";
+import { FaqCard } from "@/components/mdx/faq-card";
 import type { ComponentProps } from "react";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
@@ -10,6 +12,8 @@ type CodeProps = ComponentProps<"code"> & {
 
 export const mdxComponents = {
   MediaContainer,
+  TrustBanner,
+  FaqCard,
   h1: (props: ComponentProps<"h1">) => (
     <h2
       className="text-xl sm:text-2xl font-bold tracking-tight text-foreground mt-8 mb-4 pb-2 border-b border-border/60"
@@ -36,19 +40,19 @@ export const mdxComponents = {
   ),
   p: (props: ComponentProps<"p">) => (
     <p
-      className="text-sm sm:text-base leading-relaxed text-muted-foreground/90 my-3.5 text-pretty font-sans"
+      className="text-sm sm:text-base leading-relaxed text-foreground/90 dark:text-muted-foreground my-3.5 text-pretty font-sans"
       {...props}
     />
   ),
   ul: (props: ComponentProps<"ul">) => (
     <ul
-      className="my-4 space-y-2 pl-5 list-disc marker:text-primary/70 text-sm sm:text-base text-muted-foreground/90"
+      className="my-4 space-y-2 pl-5 list-disc marker:text-primary/70 text-sm sm:text-base text-foreground/90 dark:text-muted-foreground"
       {...props}
     />
   ),
   ol: (props: ComponentProps<"ol">) => (
     <ol
-      className="my-4 space-y-2 pl-5 list-decimal marker:text-primary/70 text-sm sm:text-base text-muted-foreground/90 font-sans"
+      className="my-4 space-y-2 pl-5 list-decimal marker:text-primary/70 text-sm sm:text-base text-foreground/90 dark:text-muted-foreground font-sans"
       {...props}
     />
   ),
@@ -64,8 +68,25 @@ export const mdxComponents = {
       {...props}
     />
   ),
-  a: ({ href, children, ...props }: ComponentProps<"a">) => {
+  a: ({ href, children, className, ...props }: ComponentProps<"a">) => {
     const isInternal = href?.startsWith("/") || href?.startsWith("#");
+    
+    // If element already has custom button/card classes, render as-is without forcing prose underline
+    if (className) {
+      if (isInternal && href) {
+        return (
+          <Link href={href} className={className} {...props}>
+            {children}
+          </Link>
+        );
+      }
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={className} {...props}>
+          {children}
+        </a>
+      );
+    }
+
     if (isInternal && href) {
       return (
         <Link
@@ -150,7 +171,7 @@ export const mdxComponents = {
     <th className="p-3 font-semibold text-foreground text-xs uppercase tracking-wider" {...props} />
   ),
   td: (props: ComponentProps<"td">) => (
-    <td className="p-3 border-b border-border/50 text-muted-foreground" {...props} />
+    <td className="p-3 border-b border-border/50 text-foreground/90 dark:text-muted-foreground" {...props} />
   ),
   code: ({ children, ...props }: CodeProps) => {
     if (props["data-language"]) {

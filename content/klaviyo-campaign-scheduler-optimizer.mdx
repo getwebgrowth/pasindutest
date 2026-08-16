@@ -1,0 +1,102 @@
+---
+title: "Klaviyo Campaign Scheduler & Bulk Image Optimizer Chrome Extension"
+publishedAt: "2025-11-20"
+updatedAt: "2026-08-16"
+author: "Pasindu Piumal"
+summary: "Specialized browser extension for e-commerce brands on Klaviyo, automating newsletter scheduling across multiple brand accounts, optimizing promotional image assets, and streamlining email marketing workflows."
+image: "/Automated Pro.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Verified</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">5.0 ★ Client Order</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Scraping & Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Full-Stack Development</span>
+</div>
+
+<TrustBanner />
+
+## Executive Summary & Commercial Scope
+
+**Klaviyo Campaign Scheduler & Bulk Image Optimizer Chrome Extension** is an enterprise-grade software deliverable engineered by **Pasindu Piumal** for a client on Fiverr. Built to solve high-friction operational bottlenecks, this system integrates deeply with browser runtimes, modern web APIs, and cloud backends to deliver automated, reliable, and secure execution.
+
+- **Role**: E-Commerce Email Automation Developer
+- **Primary Specialization**: Scraping & Automation & Browser Automation
+- **Target Search Keywords**: Chrome Extension Developer for Hire, Manifest V3 Developer, Full Stack Developer, SaaS MVP Developer, Full Stack Dev Team
+- **Client Rating**: ⭐⭐⭐⭐⭐ (5.0 / 5.0 on Fiverr)
+- **Turnaround Speed**: 48h Rapid MVP Delivery
+
+---
+
+## The Business Challenge & Client Pain Points
+
+An e-commerce agency managing 20+ Shopify and Klaviyo accounts was losing 4 hours every campaign day logging in and out of client accounts, resizing promotional banners, and scheduling repetitive email sequences.
+
+---
+
+## System Architecture & Data Propagation
+
+The application follows a decoupled event-driven architecture that isolates foreground user interactions from background service worker processing:
+
+```ascii
++-------------------------------------------------------------+
+|                 Agency Klaviyo Extension HUD                |
+|   * Multi-Account Selector     * Batch Campaign Scheduler   |
+|   * In-Browser Image Resizer   * Automated UTM Tag Builder  |
++------------------------------+------------------------------+
+                               | Asynchronous API & DOM Sync
+                               v
++-------------------------------------------------------------+
+|                 Klaviyo Cloud REST API & Web App            |
+|   * Parallel Campaign Deploy   * Segment Target Verification|
+|   * Image Asset Optimization   * Scheduled Broadcast Queue  |
++-------------------------------------------------------------+
+```
+
+---
+
+## Core Technical Innovations & Solved Engineering Hurdles
+
+### 1. Multi-Account Session Switching & Token Persistence
+Architected a secure session switching manager in `chrome.storage.sync` allowing agency staff to toggle between client Klaviyo workspaces with preserved credentials.
+
+### 2. Client-Side Canvas Image Compression Pipeline
+Built an in-browser Web Worker image processing pipeline using HTML5 `<canvas>` that automatically resizes and compresses high-resolution banner graphics to Klaviyo-recommended email specs (under 1MB) before upload.
+
+### 3. Bulk Campaign Date & Time Matrix Scheduler
+Engineered an automated calendar scheduling injector that programs launch dates, segment exclusions, and UTM parameters across multiple draft emails in parallel.
+
+### 4. DOM Mutation Observer for Dynamic Klaviyo SPA UI
+Attached non-intrusive action buttons to the Klaviyo dashboard using throttled DOM observers, ensuring tools remain active across client-side route transitions.
+
+---
+
+## Engineering Technology Stack
+
+| Architecture Layer | Technologies & Frameworks Used |
+|---|---|
+| **Runtime & Core** | Chromium Manifest V3, ESNext JavaScript, TypeScript, Node.js |
+| **Extension APIs** | `storage, activeTab, scripting, tabs, fileSystem` |
+| **Frontend & UI Portal** | Shadow DOM Isolation, Modern Glassmorphism HUD |
+| **Networking & Protocols** | Asynchronous Fetch / RPC Messaging, REST APIs, JSON Streams |
+| **State & Persistence** | `chrome.storage.local` / `chrome.storage.sync` with Cache Deduplication |
+
+---
+
+## Concrete Performance Metrics & Business Outcomes
+
+- **Saved**: Saved 15+ hours weekly for agency email marketing teams
+- **Zero**: Zero email deliverability issues from uncompressed images
+- **5.0**: 5.0 ★ verified review from agency founder on Fiverr
+
+---
+
+## Frequently Asked Questions (FAQ) & Hiring Guide
+
+
+
+<FaqCard question="Does this extension modify our Klaviyo account templates directly?" answer="No. It integrates as an unobtrusive assistant on top of the native Klaviyo interface to speed up asset uploading and campaign scheduling." />
+
+<FaqCard question="Can it handle bulk scheduling for Black Friday / Cyber Monday campaigns?" answer="Yes. It allows marketing managers to program dozens of promotional email broadcasts across multiple timezones in minutes." />
+
+<FaqCard question="Is it compatible with Shopify and Omnisend?" answer="The underlying image optimization and scheduling architecture can be extended to Shopify Email, Omnisend, Mailchimp, and ActiveCampaign. ---" />

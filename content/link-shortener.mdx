@@ -1,30 +1,48 @@
 ---
-title: "Link Shortener — QR & Custom URL Management Chrome Extension"
+title: "Link Shortener — Instant URL Shrinker, QR Code & Click Analytics Chrome Extension"
 publishedAt: "2025-04-15"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "Sleek Chrome extension that shrinks active tab URLs instantly with one-click QR code generation, click analytics, and custom domain aliases."
+summary: "Sleek Manifest V3 Chrome extension shrinking active tab URLs instantly with offline QR code generation, click tracking analytics, and custom domain shortener integration."
 image: "/shortner.webp"
-content: ""
 ---
 
-# Link Shortener — QR & Custom URL Management Chrome Extension
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Extension</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">QR Code Generator</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">History & Analytics</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Chrome Extension Utility</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Offline QR Engine</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Clipboard Auto-Copy</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
-**Link Shortener** provides instant URL minification with offline QR code rendering and clipboard automation.
+**Link Shortener** is a modern browser utility extension designed for marketers, content creators, and professionals. With a single click or keyboard shortcut, the extension minifies the active tab URL, copies the short link directly to clipboard, generates a high-resolution vector QR code for mobile scanning, and logs history metrics locally.
+
+- **Capabilities**: 1-click active URL shortening, QR code download (PNG/SVG), link history search, and Bitly / dub.co API integration.
 
 ---
 
-## Hire an Expert Extension Developer
+## Technical Features & Stack
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+### 1. Offline Vector QR Code Engine
+Generates high-resolution SVG and PNG QR codes in client-side memory using pure JavaScript, allowing users to project or download codes offline without external tracking servers.
+
+### 2. Active Tab URL Interception
+Uses `chrome.tabs.query` to capture the current active URL securely without requesting broad web permission scopes, preserving browser privacy and security standards.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Link Shortener architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

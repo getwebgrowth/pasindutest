@@ -56,7 +56,7 @@ export default function Page() {
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-all text-xs font-semibold text-primary group shadow-xs"
               >
                 <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Built FUT Snipe Bot: 100k+ Users · $1M+ Revenue</span>
+                <span>Built FUT Snipe Bot: 100k+ Peak Users · $1M+ Revenue Generated</span>
                 <ArrowUpRight className="size-3 text-primary/70 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </BlurFade>
@@ -87,16 +87,16 @@ export default function Page() {
                       <div className="text-[10px] text-muted-foreground">Real-World Projects</div>
                     </div>
                     <div className="p-2 rounded-xl border bg-background/50 backdrop-blur-xs text-center">
-                      <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400">100% JSS</div>
-                      <div className="text-[10px] text-muted-foreground">Top Rated Upwork</div>
+                      <div className="text-sm font-bold text-emerald-700 dark:text-emerald-400">$1M+</div>
+                      <div className="text-[10px] text-muted-foreground">Revenue Generated</div>
+                    </div>
+                    <div className="p-2 rounded-xl border bg-background/50 backdrop-blur-xs text-center">
+                      <div className="text-sm font-bold text-amber-800 dark:text-amber-300">100k+</div>
+                      <div className="text-[10px] text-muted-foreground">Peak Users</div>
                     </div>
                     <div className="p-2 rounded-xl border bg-background/50 backdrop-blur-xs text-center">
                       <div className="text-sm font-bold text-primary">$20/hr</div>
                       <div className="text-[10px] text-muted-foreground">Tracked Rate</div>
-                    </div>
-                    <div className="p-2 rounded-xl border bg-background/50 backdrop-blur-xs text-center">
-                      <div className="text-sm font-bold text-foreground">100k+</div>
-                      <div className="text-[10px] text-muted-foreground">Active Users</div>
                     </div>
                   </div>
                 </BlurFade>
@@ -220,7 +220,13 @@ export default function Page() {
               {DATA.skills.map((skill, id) => (
                 <BlurFade key={skill.name} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
                   <div className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-4 flex items-center gap-2">
-                    {skill.icon && <skill.icon className="size-4 rounded overflow-hidden object-contain" style={'color' in skill && skill.color ? { color: skill.color } : undefined} />}
+                    {skill.icon && (
+                      <skill.icon
+                        className="size-4 rounded overflow-hidden object-contain"
+                        style={'color' in skill && skill.color ? { color: skill.color } : undefined}
+                        aria-hidden="true"
+                      />
+                    )}
                     <span className="text-foreground text-sm font-medium">{skill.name}</span>
                   </div>
                 </BlurFade>

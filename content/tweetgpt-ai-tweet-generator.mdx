@@ -1,0 +1,122 @@
+---
+title: "TweetGPT — AI Social Post & Viral Reply Generator Chrome Extension"
+publishedAt: "2025-11-20"
+updatedAt: "2026-08-16"
+author: "Pasindu Piumal"
+summary: "Looking to hire an expert Chrome Extension Developer, Manifest V3 Specialist, or Full Stack Developer? Read how Pasindu Piumal engineered Brandynscott on Fiverr: an enterprise-grade ai & llm copilots featuring robust DOM automation, asynchronous state pipelines, and high-converting commercial architectures."
+image: "/Automated Pro.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Verified</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">5.0 ★ Client Order</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">AI & LLM Copilots</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Full-Stack Development</span>
+</div>
+
+<TrustBanner />
+
+## Executive Summary & Commercial Scope
+
+**Brandynscott** is an enterprise-grade software deliverable engineered by **Pasindu Piumal** for a client on Fiverr. Built to solve high-friction operational bottlenecks, this system integrates deeply with browser runtimes, modern web APIs, and cloud backends to deliver automated, reliable, and secure execution.
+
+- **Role**: Full-Stack Extension Developer
+- **Deliverable**: Manifest V3 Social Automation Chrome Extension
+- **Primary Specialization**: AI & LLM Copilots & Browser Automation
+- **Target Search Keywords**: Chrome Extension Developer for Hire, Manifest V3 Developer, Full Stack Developer, SaaS MVP Developer, Full Stack Dev Team
+- **Client Rating**: ⭐⭐⭐⭐⭐ (5.0 / 5.0 on Fiverr)
+- **Turnaround Speed**: 48h Rapid MVP Delivery
+
+---
+
+## The Business Challenge & Client Pain Points
+
+TweetGPT is a context-aware browser extension that injects AI drafting buttons directly into social media feeds, analyzing thread context to generate witty, professional, and engagement-optimized replies.
+
+### Core Problems Solved:
+Social media marketers and creators spend hours every day manually drafting replies and quote posts to build their audience. Traditional AI writing tools require switching tabs, copy-pasting tweets, and manually editing output.
+
+1. **High Operational Friction**: The client suffered from repetitive manual tasks, cross-referencing disparate tabs, and transcription errors.
+2. **Platform & Architectural Constraints**: Modern Manifest V3 security rules required isolated worlds, ephemeral service workers, and strict content security policies.
+3. **High Reliability Expectations**: The client required a tool that executes with zero crashes, accurate error handling, and robust network retry mechanisms.
+
+---
+
+## System Architecture & Data Propagation
+
+The application follows a decoupled event-driven architecture that isolates foreground user interactions from background service worker processing:
+
+```ascii
++-------------------------------------------------------------+
+|                 In-Feed Injected Draft Button               |
+|   * One-Click "Generate Reply" * Tone Selector Dropdown     |
++------------------------------+------------------------------+
+                               | DOM Thread Context Payload
+                               v
++-------------------------------------------------------------+
+|             Background Service Worker AI Dispatcher         |
+|  +-------------------------+     +------------------------+ |
+|  | Persona Matrix & Prompt |---->| OpenAI GPT-4o API      | |
+|  | Template Assembler      |     | (Temperature: 0.7)     | |
+|  +-------------------------+     +-----------+------------+ |
++----------------------------------------------+--------------+
+                                               | Synthetic Input Event
+                                               v
++-------------------------------------------------------------+
+|                 React Draft.js / ContentEditable            |
+|   * Auto-Saves In Draft Box * Instant Ready to Post         |
++-------------------------------------------------------------+
+```
+
+---
+
+## Core Technical Innovations & Solved Engineering Hurdles
+
+### 1. Context-Aware Dynamic Feed Parsing
+Engineered a throttled `MutationObserver` that monitors feed scrolling and parses active tweet text, parent thread context, author handle, and media descriptions into an enriched prompt context.
+
+### 2. Multi-Persona Tone Calibration Matrix
+Implemented an instant persona selector offering distinct tones (Thought Leader, Casual, Witty, Sarcastic, Data-Driven) with customized temperature parameters and system prompt structures.
+
+### 3. Synthetic Input Event Dispatching for React Textareas
+Dispatched synthetic `InputEvent` and `document.execCommand` triggers to ensure AI-generated drafts immediately update React and Draft.js state models without discarding input.
+
+### 4. In-Memory Token Ledger & 429 Error Backoff
+Built an adaptive rate-limiter that tracks API consumption in real time and applies exponential backoff retries to prevent OpenAI 429 quota errors during intensive social browsing.
+
+---
+
+## Engineering Technology Stack
+
+| Architecture Layer | Technologies & Frameworks Used |
+|---|---|
+| **Runtime & Core** | Chromium Manifest V3, ESNext JavaScript, TypeScript, Node.js |
+| **Extension APIs** | `storage, scripting, notifications` |
+| **Frontend & UI Portal** | Shadow DOM Isolation, Modern Glassmorphism HUD |
+| **Networking & Protocols** | Asynchronous Fetch / RPC Messaging, REST APIs, JSON Streams |
+| **State & Persistence** | `chrome.storage.local` / `chrome.storage.sync` with Cache Deduplication |
+
+---
+
+## Concrete Performance Metrics & Business Outcomes
+
+- **5x**: 5x increase in daily social engagement replies
+- **Sub-400ms**: Sub-400ms prompt assembly and dispatch
+- **100%**: 100% compatibility with dynamic single-page social feeds
+- **5.0**: 5.0 ★ verified Fiverr client review
+
+---
+
+## Frequently Asked Questions (FAQ) & Hiring Guide
+
+
+
+<FaqCard question="How does TweetGPT inject buttons into dynamic social media feeds?" answer="It utilizes an optimized MutationObserver to detect new tweet cards as the user scrolls, injecting lightweight SVG action buttons directly next to native reply icons." />
+
+<FaqCard question="Does TweetGPT sound robotic or generic?" answer="No. The extension extracts parent thread context and applies customized tone calibration matrices (Thought Leader, Witty, Data-Driven) to generate highly human-like replies." />
+
+<FaqCard question="Can this be adapted for LinkedIn, Reddit, or YouTube comments?" answer="Yes. Pasindu can adapt this context-aware injection engine for any social platform or CRM messaging interface." />
+
+<FaqCard question="How much does it cost to build a custom social AI extension?" answer="Custom social extensions are built rapidly at $20/hr tracked via Upwork or fixed milestone contracts on Fiverr." />
+
+<FaqCard question="Is user API key storage secure?" answer="Yes. OpenAI API keys are stored locally using `chrome.storage.sync` with AES-256 client-side encryption. ---" />

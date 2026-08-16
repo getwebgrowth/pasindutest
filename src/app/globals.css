@@ -133,12 +133,16 @@
     background-color: transparent;
   }
 
-.prose pre {
-    @apply leading-relaxed bg-transparent! font-mono!;
+  .prose pre {
+    @apply leading-relaxed bg-transparent! font-mono! p-0! m-0! border-none!;
   }
 
-  .prose code {
-    @apply m-0! mx-1! border rounded-md! px-1.5 py-0.5 bg-muted/60 dark:bg-muted/40 text-[13px]! font-mono text-foreground/90!;
+  .prose :not(pre) > code {
+    @apply m-0! mx-0.5! border rounded-md! px-1.5 py-0.5 bg-muted/60 dark:bg-muted/40 text-[13px]! font-mono text-foreground/90!;
+  }
+
+  .prose pre code {
+    @apply p-0! m-0! border-none! bg-transparent! text-inherit! shadow-none!;
   }
 
   .prose code::before, .prose code::after {

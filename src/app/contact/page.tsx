@@ -59,12 +59,12 @@ export default function ContactPage() {
             />
             
             {/* Ambient gradients */}
-            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.12),transparent_70%)] pointer-events-none -z-10" />
 
             <div className="max-w-2xl mx-auto space-y-10">
                 <header className="space-y-4 text-center">
                     <BlurFade delay={BLUR_FADE_DELAY}>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 text-xs font-semibold">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20 text-xs font-semibold">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -87,10 +87,10 @@ export default function ContactPage() {
                         <div className="p-4 rounded-2xl border-2 border-primary/30 bg-primary/5 dark:bg-primary/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
                             <div className="space-y-0.5">
                                 <div className="flex items-center gap-2">
-                                    <Icons.upwork className="size-4 text-emerald-600 dark:text-emerald-400 fill-current" />
+                                    <Icons.upwork className="size-4 text-emerald-700 dark:text-emerald-400 fill-current" />
                                     <span className="text-xs font-bold text-foreground">Upwork Top Rated (100% JSS)</span>
                                 </div>
-                                <p className="text-xs text-muted-foreground">$20/hr tracked or milestone escrows with guaranteed IP security.</p>
+                                <p className="text-xs text-foreground/80 dark:text-muted-foreground">$20/hr tracked or milestone escrows with guaranteed IP security.</p>
                             </div>
                             <Link
                                 href="https://www.upwork.com/freelancers/pasindupiumal"
@@ -139,7 +139,7 @@ export default function ContactPage() {
                                     <Send size={15} />
                                     <span className="text-xs font-bold uppercase tracking-wider">Send a Direct Message</span>
                                 </div>
-                                <h3 className="text-lg font-bold text-foreground">Project Inquiry Form</h3>
+                                <h2 className="text-lg font-bold text-foreground">Project Inquiry Form</h2>
                             </div>
                             <ContactForm />
                         </div>

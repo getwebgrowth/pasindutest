@@ -6,49 +6,63 @@ author: "Pasindu Piumal"
 summary: "Full-stack SaaS platform and Chrome extension for Twitter/X creator growth and viral analytics. Features live timeline data extraction, dashboard metrics, authentication, and payment-ready architecture."
 image: "/image_original.png"
 video: "/e0causakquxoglv8dn8i.mp4"
-content: ""
 ---
-
-# SuperX — Twitter/X Growth Analytics & Full-Stack SaaS Extension
 
 <div className="flex flex-wrap gap-2 my-4">
   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Chrome Web Store Published</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Full-Stack SaaS Platform</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">React • Node.js • Express • PostgreSQL</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Social Growth Analytics</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">Full-Stack SaaS Architecture</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">React • Node.js • PostgreSQL</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3</span>
 </div>
 
 ## Executive Summary
 
 **SuperX** is an enterprise social media intelligence suite combining a Manifest V3 Chrome extension with a dedicated web dashboard. Engineered for content creators, founders, and marketing teams, SuperX injects real-time engagement metrics, viral post predictors, and audience growth charts directly into Twitter/X timelines.
 
-- **Status**: Live on the [Chrome Web Store](https://chromewebstore.google.com/detail/superx-twitter-analytics/bjobgelaoehgbnklgcaaehdpckmhkplk)
+- **Chrome Web Store**: [Chrome Web Store Listing](https://chromewebstore.google.com/detail/superx-twitter-analytics/bjobgelaoehgbnklgcaaehdpckmhkplk)
 - **Architecture**: Chrome Extension (Frontend Injector) + Node.js/Express Backend + Analytics Pipeline.
 
 ---
 
-## Key Capabilities
+## Engineering Architecture & System Design
 
-1. **Timeline Metric Injection**: Overlays calculated engagement rates, impression velocity, and reply-to-retweet ratios onto every tweet in the user's feed.
-2. **Viral Hook Analyzer**: Analyzes top-performing posts across any creator's profile, identifying recurring formats, character counts, and peak posting times.
-3. **Creator Growth Dashboard**: Synchronizes timeline data to a dedicated web portal with historical performance charts and exportable CSV reports.
-4. **Subscription Paywall & User Auth**: JWT authentication with Stripe checkout for Pro creator tiers.
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Twitter/X Browser Tab (MV3)              │
+│                                                             │
+│  ┌─────────────────────────────┐   ┌─────────────────────┐  │
+│  │ X Timeline DOM Interceptor  │   │ Analytics Overlay   │  │
+│  │ (GraphQL API Listener)      │──►│ (Viral Hook HUD)    │  │
+│  └──────────────┬──────────────┘   └──────────▲──────────┘  │
+│                 │ Intercepted Post Metrics    │ Sync Analytics│
+│                 ▼                             │ Response     │
+│  ┌────────────────────────────────────────────┴──────────┐  │
+│  │ Node.js / Express SaaS Backend + Redis Cache          │  │
+│  └──────────────┬─────────────────────────────┬──────────┘  │
+└─────────────────┼─────────────────────────────┼─────────────┘
+                  ▼                             ▼
+         PostgreSQL Database           Stripe Billing API
+```
+
+### 1. GraphQL Network Interception Layer
+Intercepts Twitter/X's internal GraphQL HTTP requests in real-time, capturing engagement counters, impression numbers, and quote retweet metadata without polling DOM elements.
+
+### 2. Timeline Analytics HUD
+Renders a custom React overlay over tweets, displaying calculated engagement rates, impression velocity, and viral hook scores directly inside the Twitter UI.
 
 ---
 
-## Technical Stack & Architecture
-
-- **Extension Frontend**: Manifest V3, React 18, Tailwind CSS, DOM MutationObservers.
-- **Backend Services**: Node.js, Express.js, PostgreSQL, Redis caching.
-- **Security**: OAuth2 token management and privacy-preserving client data hashing.
 
 ---
 
-## Hire an Expert Extension & SaaS Builder
+## Frequently Asked Questions
 
-Need a social intelligence tool, Chrome extension SaaS, or full-stack web application?
+<FaqCard 
+  question="How is SuperX architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

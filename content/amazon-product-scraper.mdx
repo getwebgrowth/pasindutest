@@ -1,31 +1,53 @@
 ---
-title: "Amazon Product Scraper — Automated OCR & Sheet Pipeline Chrome Extension"
+title: "Amazon Product Scraper — Automated OCR Image Processing & Google Sheets Catalog Pipeline"
 publishedAt: "2025-11-10"
 updatedAt: "2026-08-15"
 author: "Pasindu Piumal"
-summary: "High-volume Amazon product extraction Chrome extension with OCR image processing and Google Sheets synchronization for e-commerce catalog management."
+summary: "High-volume Amazon e-commerce catalog scraper extracting ASIN metrics, bullet points, manufacturer data, and OCR image text directly into Google Sheets."
 image: "/amazon-product-scraper.png"
 video: "/amazon-product-scraper.mp4"
-content: ""
 ---
 
-# Amazon Product Scraper — Automated OCR & Sheet Pipeline
-
 <div className="flex flex-wrap gap-2 my-4">
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Extension</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">OCR Image Processing</span>
-  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border">Google Sheets API Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">E-Commerce Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">OCR Image Text Extraction</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Google Sheets API</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Manifest V3 Extension</span>
 </div>
 
 ## Executive Summary
 
-**Amazon Product Scraper** extracts ASINs, product bullets, manufacturer details, and OCR-extracted text from product infographics, writing clean structured rows directly into Google Sheets.
+**Amazon Product Scraper** is a specialized e-commerce automation tool designed for Amazon sellers, brand managers, and product researchers. Given a list of ASINs or product URLs, the tool extracts titles, bullet points, descriptions, price history, brand metrics, and applies Optical Character Recognition (OCR) to extract text buried inside main product images.
+
+- **Source Code**: [github.com/pasindupiumal03/Amazon-Product-Scrapes-Extension](https://github.com/pasindupiumal03/Amazon-Product-Scrapes-Extension)
+- **Key Capability**: Hybrid extraction combining client-side DOM scraping (bypassing CAPTCHAs) with OCR image parsing and direct Google Sheets appending.
 
 ---
 
-## Hire an Expert Automation Developer
+## Technical Features & Solutions
 
-- **Upwork Top Rated Developer** (100% Job Success)
-- **Rate**: $20/hr
-- **Upwork Profile**: [upwork.com/freelancers/pasindupiumal](https://www.upwork.com/freelancers/pasindupiumal)
-- **Email**: [pasindupiumal03@gmail.com](mailto:pasindupiumal03@gmail.com)
+### 1. Client-Side Scraping (Bot-Detection Bypass)
+By executing data extraction in client-side browser contexts using background extension content scripts, the scraper bypasses cloud WAF gateways and IP bans that block traditional server-side Puppeteer scripts.
+
+### 2. OCR Image Infographic Extraction
+Uses Tesseract OCR and Vision API bridges to read text embedded inside product infographics (nutrition facts, dimension labels, warranty details), ensuring 100% data capture.
+
+### 3. Direct Google Sheets Sync
+Pushes normalized listing rows directly into user Google Sheets using OAuth2 tokens and Google Apps Script Webhooks.
+
+---
+
+
+---
+
+## Frequently Asked Questions
+
+<FaqCard 
+  question="How is Amazon Product Scraper architected for long-term browser compatibility?"
+  answer="The solution strictly adheres to Manifest V3 specifications using modular background service workers, declarative network rules where required, and isolated DOM injection scripts to ensure continuous stability across Google Chrome updates."
+/>
+
+<FaqCard 
+  question="Can this architecture be customized for specific enterprise workflows?"
+  answer="Yes. Every pipeline component—from dynamic DOM observers and automated form injection to remote API synchronization—is built with modular TypeScript code that can be adapted to custom business requirements."
+/>

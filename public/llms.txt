@@ -1,0 +1,15 @@
+# Pasindu Piumal — Freelance Chrome Extension Developer
+
+> Expert Manifest V3 Chrome Extension Developer, Browser Automation Engineer, and Full-Stack SaaS Specialist. 175+ production projects delivered with 100% Upwork Job Success Score and 5.0-star rating. Available for hire worldwide at $20/hr tracked or milestone escrows.
+
+## Core Services & Capabilities
+- [Chrome Extension Development Services](https://pasinduxyz.com/chrome-extension-developer-for-hire): Manifest V3 architecture, service worker lifecycle management, Shadow DOM style shielding, side panels, and Web Store publishing.
+- [AI Browser Copilots & LLM Integration](https://pasinduxyz.com/projects): Real-time OpenAI GPT-4o streaming, Claude API, local OCR, vector search embeddings, and floating HUD copilots.
+- [Browser Automation & Web Scraping](https://pasinduxyz.com/projects): High-frequency DOM scrapers, anti-bot mitigation, MutationObserver pipelines, and direct Google Sheets / Airtable export.
+- [Full-Stack SaaS MVP Engineering](https://pasinduxyz.com/projects): Next.js, React, Node.js, TypeScript, PostgreSQL, Supabase, and Stripe payment gateways.
+
+## Verified Freelance Profiles & Contact
+- [Upwork Freelancer Profile ($20/hr)](https://www.upwork.com/freelancers/pasindupiumal): Top Rated freelance profile with 100% Job Success Score.
+- [Fiverr Pro Seller Profile (5.0 ★)](https://www.fiverr.com/pasinduxyz): 5-star rated seller for custom Chrome extensions and web scrapers.
+- [Direct Contact & Project Inquiry](https://pasinduxyz.com/contact): Get instant quotes, technical architecture estimates, and fixed-milestone pricing.
+- [Portfolio & Case Studies](https://pasinduxyz.com/projects): Explore 113+ real-world client case studies and technical architectures.

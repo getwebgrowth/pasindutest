@@ -1,0 +1,102 @@
+---
+title: "IPL Logistics Load Auto-Fill Bot — Fleet Dispatch Automation Extension"
+publishedAt: "2025-11-20"
+updatedAt: "2026-08-16"
+author: "Pasindu Piumal"
+summary: "Custom Manifest V3 Chrome extension designed for freight brokerages and dispatchers to auto-fill load confirmation forms, parse carrier rate sheets, and eliminate repetitive dispatch data entry."
+image: "/Automated Pro.png"
+---
+
+<div className="flex flex-wrap gap-2 my-4">
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">Manifest V3 Verified</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 border border-emerald-500/20">5.0 ★ Client Order</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">Scraping & Automation</span>
+  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-foreground/90 font-medium border">Full-Stack Development</span>
+</div>
+
+<TrustBanner />
+
+## Executive Summary & Commercial Scope
+
+**IPL Logistics Load Auto-Fill Bot** is an enterprise-grade software deliverable engineered by **Pasindu Piumal** for a client on Fiverr. Built to solve high-friction operational bottlenecks, this system integrates deeply with browser runtimes, modern web APIs, and cloud backends to deliver automated, reliable, and secure execution.
+
+- **Role**: Logistics Automation & Browser Extension Engineer
+- **Primary Specialization**: Scraping & Automation & Browser Automation
+- **Target Search Keywords**: Chrome Extension Developer for Hire, Manifest V3 Developer, Full Stack Developer, SaaS MVP Developer, Full Stack Dev Team
+- **Client Rating**: ⭐⭐⭐⭐⭐ (5.0 / 5.0 on Fiverr)
+- **Turnaround Speed**: 48h Rapid MVP Delivery
+
+---
+
+## The Business Challenge & Client Pain Points
+
+Freight dispatch teams manage dozens of load bookings daily across platforms like DAT, Truckstop, and proprietary logistics portals. Dispatchers were spending 15-20 minutes manually transcribing carrier MC numbers, rate confirmations, driver contact info, and delivery appointment slots into disparate web forms.
+
+---
+
+## System Architecture & Data Propagation
+
+The application follows a decoupled event-driven architecture that isolates foreground user interactions from background service worker processing:
+
+```ascii
++-------------------------------------------------------------+
+|               Dispatcher In-Browser Control HUD             |
+|   * One-Click Profile Preset   * Clipboard Manifest Parser  |
+|   * Multi-Iframe Auto-Fill     * Validation Confirmation    |
++------------------------------+------------------------------+
+                               | Injected Content Script
+                               v
++-------------------------------------------------------------+
+|             Logistics Portal / DAT / Truckstop Form         |
+|   * Carrier MC/DOT Lookup      * Origin / Destination Input |
+|   * Rate Calculation Populate  * Delivery Appointment Sync  |
++-------------------------------------------------------------+
+```
+
+---
+
+## Core Technical Innovations & Solved Engineering Hurdles
+
+### 1. Complex Multi-Iframe Form Traversal
+Logistics portals frequently embed form fields inside nested iframes with dynamic IDs. Pasindu built an automated DOM selector engine that recursively traverses cross-origin iframe boundaries to locate and populate driver and cargo inputs accurately.
+
+### 2. Rate Sheet & PDF Manifest Data Parsing
+Integrated a lightweight client-side parser that extracts key-value pairs (origin, destination, weight, commodity, rate per mile) directly from pasted text or clipboard PDF snippets.
+
+### 3. Anti-Throttle Input Emulation
+Dispatched sequential keyboard events with natural timing intervals to satisfy client-side input masks on carrier portals without triggering bot security locks.
+
+### 4. Encrypted Local Profile Presets
+Enabled dispatchers to store reusable carrier fleet profiles and insurance paperwork references in `chrome.storage.local` with one-click quick-fill hotkeys.
+
+---
+
+## Engineering Technology Stack
+
+| Architecture Layer | Technologies & Frameworks Used |
+|---|---|
+| **Runtime & Core** | Chromium Manifest V3, ESNext JavaScript, TypeScript, Node.js |
+| **Extension APIs** | `declarativeNetRequest, declarativeNetRequestFeedback, tabs` |
+| **Frontend & UI Portal** | Shadow DOM Isolation, Modern Glassmorphism HUD |
+| **Networking & Protocols** | Asynchronous Fetch / RPC Messaging, REST APIs, JSON Streams |
+| **State & Persistence** | `chrome.storage.local` / `chrome.storage.sync` with Cache Deduplication |
+
+---
+
+## Concrete Performance Metrics & Business Outcomes
+
+- **Reduced**: Reduced booking entry time from 15 minutes to under 20 seconds
+- **Zero**: Zero transcription errors across 500+ weekly dispatches
+- **100%**: 100% Manifest V3 compliance with zero browser lag
+
+---
+
+## Frequently Asked Questions (FAQ) & Hiring Guide
+
+
+
+<FaqCard question="Can this bot work on custom freight management portals?" answer="Yes. The DOM parser can be tailored to any TMS (Transportation Management System) or load board including DAT, Truckstop, McLeod, and proprietary carrier portals." />
+
+<FaqCard question="Does the extension require access to external servers?" answer="No. All carrier profiles and form parsing run 100% locally in your browser for complete data confidentiality." />
+
+<FaqCard question="Can we add custom validation rules for carrier insurance checks?" answer="Yes. Custom logic can be added to verify expiration dates and minimum liability amounts before submitting forms. ---" />

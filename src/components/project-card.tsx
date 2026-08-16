@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Markdown from "react-markdown";
 
@@ -81,16 +82,9 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
-  const isClickable = href && href !== "#";
-  const ImageWrapper = isClickable ? Link : "div";
+  const router = useRouter();
+  const isClickable = Boolean(href && href !== "#");
   const isInternal = href?.startsWith("/");
-  const wrapperProps = isClickable ? {
-    href: href!,
-    ...(isInternal ? {} : { target: "_blank", rel: "noopener noreferrer" }),
-    className: "block"
-  } : {
-    className: "block"
-  };
 
   const cleanDesc = cleanDescriptionForAlt(description);
   const descriptiveAlt = cleanDesc
@@ -99,49 +93,95 @@ export function ProjectCard({
 
   const formattedVideo = formatMediaSrc(video);
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (!isClickable || !href) return;
+    // Don't trigger card click if clicking inside an interactive link/button
+    const target = e.target as HTMLElement;
+    if (target.closest("a") || target.closest("button")) {
+      return;
+    }
+
+    if (isInternal) {
+      router.push(href);
+    } else {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
     <div
+      onClick={handleCardClick}
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden transition-all duration-200",
-        isClickable && "hover:ring-2 cursor-pointer hover:ring-muted",
+        "flex flex-col h-full border border-border rounded-xl overflow-hidden transition-all duration-200 group",
+        isClickable && "hover:ring-2 cursor-pointer hover:ring-muted hover:shadow-md",
         className
       )}
     >
       <div className="relative shrink-0">
-        <ImageWrapper {...wrapperProps as any}>
-          {formattedVideo ? (
-            <video
-              src={formattedVideo}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-48 object-cover"
-              title={`${title} - Video demonstration by Pasindu Piumal`}
-              aria-label={`${title} - Video demonstration by Pasindu Piumal`}
-            />
-          ) : image ? (
-            <ProjectImage src={image} alt={descriptiveAlt} />
-          ) : (
-            <div className="w-full h-48 bg-muted" />
-          )}
-        </ImageWrapper>
+        {isClickable ? (
+          <Link
+            href={href!}
+            {...(isInternal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+            className="block"
+          >
+            {formattedVideo ? (
+              <video
+                src={formattedVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-48 object-cover"
+                title={`${title} - Video demonstration by Pasindu Piumal`}
+                aria-label={`${title} - Video demonstration by Pasindu Piumal`}
+              />
+            ) : image ? (
+              <ProjectImage src={image} alt={descriptiveAlt} />
+            ) : (
+              <div className="w-full h-48 bg-muted flex items-center justify-center text-xs text-muted-foreground">
+                Preview
+              </div>
+            )}
+          </Link>
+        ) : (
+          <div className="block">
+            {formattedVideo ? (
+              <video
+                src={formattedVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-48 object-cover"
+                title={`${title} - Video demonstration by Pasindu Piumal`}
+                aria-label={`${title} - Video demonstration by Pasindu Piumal`}
+              />
+            ) : image ? (
+              <ProjectImage src={image} alt={descriptiveAlt} />
+            ) : (
+              <div className="w-full h-48 bg-muted" />
+            )}
+          </div>
+        )}
+
         {links && links.length > 0 && (
-          <div className="absolute top-2 right-2 flex flex-wrap gap-2">
-            {links.map((link, idx) => (
+          <div className="absolute top-2 right-2 flex flex-wrap gap-2 z-10">
+            {links.map((l, idx) => (
               <Link
-                href={link.href}
+                href={l.href}
                 key={idx}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${l.type} - ${title}`}
                 onClick={(e) => e.stopPropagation()}
+                className="inline-flex"
               >
                 <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
+                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90 min-h-[26px] py-1 px-2.5 shadow-xs"
                   variant="default"
                 >
-                  {link.icon}
-                  {link.type}
+                  {l.icon}
+                  {l.type}
                 </Badge>
               </Link>
             ))}
@@ -151,17 +191,27 @@ export function ProjectCard({
       <div className="p-6 flex flex-col gap-3 flex-1">
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
-            <h3 className="font-semibold">{title}</h3>
+            {isClickable ? (
+              <Link
+                href={href!}
+                {...(isInternal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                className="font-semibold text-foreground group-hover:text-primary group-hover:underline transition-colors"
+              >
+                {title}
+              </Link>
+            ) : (
+              <h3 className="font-semibold">{title}</h3>
+            )}
             <time className="text-xs text-muted-foreground">{dates}</time>
           </div>
           {isClickable && (
             <Link
               href={href!}
               {...(isInternal ? {} : { target: "_blank", rel: "noopener noreferrer" })}
-              className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+              className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm shrink-0"
               aria-label={`Open ${title}`}
             >
-              <ArrowUpRight className="h-4 w-4" aria-hidden />
+              <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden />
             </Link>
           )}
         </div>
